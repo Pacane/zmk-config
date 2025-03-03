@@ -1,0 +1,15 @@
+file_format: "1"
+id: pacane_corne
+name: Pacane_Corne
+type: shield
+url: https://github.com/foostan/crkbd/
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - underglow
+  - studio
+siblings:
+  - pacane_corne_left
+  - pacane_corne_right
