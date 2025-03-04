@@ -127,7 +127,7 @@ ZMK_HOLD_TAP(hmr,
 
 	default_layer {
 	    bindings = <
-    &bt BT_CLR_ALL &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN    &bt BT_CLR_ALL
+    &kp ESC 	  &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN     &kp PSCRN
     &kp LSHIFT	  &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O &kp SQT
     &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &kp H        &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
 		                     	       &mo FUN &mo LOW &kp SPACE        &lt NUM RET &lt RAI BSPC &lt RAI DEL
