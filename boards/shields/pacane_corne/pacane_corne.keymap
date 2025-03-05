@@ -240,7 +240,7 @@ ZMK_HOLD_TAP(hmr,
 	    >;
 	};
 
-	kb_layer {
+	mouse_layer {
 	    bindings = <
     &none &none &none	       &mmv MOVE_UP   &none           &mkp MB2  &none &none &none &none &none      &none
     &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1  &none &none &none &none &none      &none
