@@ -4,6 +4,11 @@
 #include "zmk-helpers/helper.h"
 #include <dt-bindings/zmk/mouse.h>
 
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
+
 #define L_SQ_BKT &kp RA(LBKT)
 #define R_SQ_BKT &kp RA(RBKT)
 
@@ -120,6 +125,8 @@ ZMK_HOLD_TAP(hmr,
 #define WIN 9
 #define BKT 10
 #define KBM 11
+#define MOU 12
+
 
 / {
     keymap {
@@ -131,7 +138,7 @@ ZMK_HOLD_TAP(hmr,
     &kp ESC	  &kp N1       &kp N2	   &kp N3      &kp N4       &kp N5	&kp N6    &kp N7       &kp N8        &kp N9      &kp N0       &kp N4
     &kp TAB	  &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN     &kp N5
     &kp LSHIFT	  &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O &kp SQT
-    &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &kp H        &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
+    &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H        &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
 		  &kp LGUI  &mo MED  &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED   &kp RALT
 	    >;
 	};
@@ -246,5 +253,16 @@ ZMK_HOLD_TAP(hmr,
 	  &none  &none  &none &none &none		      &none &none &none &none &none 
 	    >;
 	};
+
+	mouse_layer {
+	    bindings = <
+    &none &none &none	       &none          &none           &none     &none &none &none &none &none      &none
+    &none &none &none	       &mmv MOVE_UP   &none           &mkp MB2  &none &none &none &none &none      &none
+    &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1  &none &none &none &none &none      &none
+    &none &none &none          &none          &none           &none     &none &none &none &none &none      &none
+	  		    &none &none  &none &none &none	    &none &none &none &none &none
+	    >;
+	};
+
     };
 };
