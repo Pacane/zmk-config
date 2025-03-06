@@ -165,10 +165,10 @@ ZMK_HOLD_TAP(hmr,
 
 	lower_layer {
 	    bindings = <
-    &none &none &none	 &none	   &none     &none	&none     &none     &none     &none     &none &none
-    &none &none &none	 &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none &none
+    &mo KBM  &none &none    &none     &none     &none	&none     &none     &none     &none     &none &none
+    &none    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none &none
     &mo WIN  &none &kp LEFT &kp DOWN  &kp RIGHT &none	&kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &none &none
-    &none &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none &none
+    &none    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none &none
 		 &none  &none  &none &none &none		&kp DEL &kp LA(RET) &kp BSPC &mo KBM  &mo KBM 
 	    >;
 	};
@@ -247,7 +247,7 @@ ZMK_HOLD_TAP(hmr,
 	kb_layer {
 	    bindings = <
     &bootloader &sys_reset     &none &none &none  &to 0     &none &none &none &none &sys_reset &bootloader
-    &bt BT_CLR  &bt BT_CLR_ALL &none &none &none  &to 1     &none &none &none &none &none      &none
+    &bt BT_CLR  &bt BT_CLR_ALL &none &none &none  &to 1     &none &none &none &none &none      &bt BT_CLR_ALL
     &bt BT_PRV  &bt BT_NXT     &none &none &none  &to 2     &none &none &none &none &none      &none
     &bt BT_DISC &none          &none &none &none  &none     &none &none &none &none &none      &none
 	  &none  &none  &none &none &none		      &none &none &none &none &none 
