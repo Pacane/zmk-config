@@ -139,7 +139,7 @@ ZMK_HOLD_TAP(hmr,
     &kp TAB	  &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN     &kp N5
     &kp LSHIFT	  &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O &kp SQT
     &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H        &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
-		  &kp LGUI  &mo MED  &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED   &kp RALT
+		  &kp LGUI  &lt MED ESC &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED   &kp RALT
 	    >;
 	};
 	
@@ -205,11 +205,11 @@ ZMK_HOLD_TAP(hmr,
 
 	fr_layer {
 	    bindings = <
-    &none &none    &none &none    &none &none            &none &none &none &none &none    &none
-    &none &none    &none &none    &none &none            &none &none &none &none &none    &none
-    &none &kp LBKT &none &none    &none &none            &none &none &none TREMA &kp LBRC &none
-    &none &none    &none &kp RBKT &none &none            &none &none &none &none &none    &none
-	  &none    &none &none    &none &none		     &none &none  &none  &none  &none
+    &none &none    &none &none    &none &none            &none &none &none   &none &none    &none
+    &none &none    &none &none    &none &none            &none &none &none   &none &none    &none
+    &none &kp LBKT &none &none    &none &none            &none &none &kp SQT TREMA &kp LBRC &none
+    &none &none    &none &kp RBKT &none &none            &none &none &none   &none &none    &none
+	  &none    &none &none    &none &none		     &none &none &none &none &none
 	    >;
 	};
 
