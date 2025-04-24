@@ -25,6 +25,7 @@
 #define _AT &kp RA(N2)
 #define AMPRS &kp LS(N7)
 #define TREMA &kp LS(RBRC)
+#define TILDE &kp RA(SCLN)
 
 #define WS1 LC(LS(LA(N1)))
 #define WS2 LC(LS(LA(N2)))
@@ -165,11 +166,11 @@ ZMK_HOLD_TAP(hmr,
 
 	lower_layer {
 	    bindings = <
-    &mo KBM  &none &none    &none     &none     &none	&none     &none     &none     &none     &none &none
-    &none    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none &none
-    &mo WIN  &none &kp LEFT &kp DOWN  &kp RIGHT &none	&kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &none &none
-    &none    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none &none
-		 &none  &none  &none &none &none		&kp DEL &kp LA(RET) &kp BSPC &mo KBM  &mo KBM 
+    &mo KBM  &none &none    &none     &none     &none	&none     &none     &none     &none     &none       &none
+    &none    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none       &none
+    &mo WIN  &none &kp LEFT &kp DOWN  &kp RIGHT &none	&TILDE    &none     &kp SQT   &kp RIGHT &kp LS(SQT) &none
+    &none    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none       &none
+		 &none  &none  &none &none &none	     &kp DEL &kp LA(RET) &kp BSPC &mo KBM  &mo KBM 
 	    >;
 	};
 
