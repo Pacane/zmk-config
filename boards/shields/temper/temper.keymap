@@ -199,7 +199,7 @@ ZMK_HOLD_TAP(hmr,
 	fr_layer {
 	    bindings = <
     &none    &none &none    &none &none            &none &none &none   &none &none   
-    &kp LBKT &none &none    &none &none            &none &none &kp SQT TREMA &kp LBRC
+    &kp LBKT &none &none    &none &none            &none &none &kp SQT TREMA &kp SQT
     &none    &none &kp RBKT &none &none            &none &none &none   &none &none   
 	 &none    &none &none		     &none &none &none
 	    >;
