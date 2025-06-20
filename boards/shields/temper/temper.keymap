@@ -81,35 +81,35 @@ ZMK_HOLD_TAP(hmr,
 
 / {
     macros {
-        cced: cced {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp RBKT>
-                , <&macro_tap &kp C>
-                ;
-        };
+	cced: cced {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp RBKT>
+		, <&macro_tap &kp C>
+		;
+	};
 
-        passwd: passwd {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp M>
-                , <&macro_tap &kp O>
-                , <&macro_tap &kp T>
-                , <&macro_tap &kp D>
-                , <&macro_tap &kp E>
-                , <&macro_tap &kp P>
-                , <&macro_tap &kp A>
-                , <&macro_tap &kp S>
-                , <&macro_tap &kp S>
-                , <&macro_tap &kp E>
-                , <&macro_tap &kp N1>
-                , <&macro_tap &kp N2>
-                , <&macro_tap &kp N3>
-                , <&macro_tap &kp N4>
-                ;
-        };
+	passwd: passwd {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp M>
+		, <&macro_tap &kp O>
+		, <&macro_tap &kp T>
+		, <&macro_tap &kp D>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp P>
+		, <&macro_tap &kp A>
+		, <&macro_tap &kp S>
+		, <&macro_tap &kp S>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp N1>
+		, <&macro_tap &kp N2>
+		, <&macro_tap &kp N3>
+		, <&macro_tap &kp N4>
+		;
+	};
     };
 };
 
@@ -136,35 +136,35 @@ ZMK_HOLD_TAP(hmr,
 	default_layer {
 	    bindings = <
     &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN
-    &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
-    &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H        &lt BKT COMMA &kp DOT     &kp FSLH
-       		       	   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
+    &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G		&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
+    &kp Z	       &kp X	   &kp C       &kp D        &kp V	&lt MED K &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH
+			   &lt LOW ESC &lt LOW TAB &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
 	    >;
 	};
-	
+
 	qwerty_layer {
 	    bindings = <
-    &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O       &kp P   
-    &hml LCTRL A &hml RALT S &hml LGUI D &hml LSHFT F &lt FRE G	&lt FRE H &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN 
+    &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O       &kp P
+    &hml LCTRL A &hml RALT S &hml LGUI D &hml LSHFT F &lt FRE G	&lt FRE H &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN
     &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N     &kp M        &lt BKT COMMA &kp DOT     &kp FSLH
-       		       	   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
-            >;
+			   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
+	    >;
 	};
 
 	gaming_layer {
 	    bindings = <
-    &kp Q	 &kp W	   &kp E       &kp R        &kp T	&kp Y   &kp U        &kp I        &kp O       &kp P      
-    &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J	     &kp K	  &kp L	      &kp SCLN	 
+    &kp Q	 &kp W	   &kp E       &kp R        &kp T	&kp Y   &kp U        &kp I        &kp O       &kp P
+    &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J	     &kp K	  &kp L	      &kp SCLN
     &kp Z	 &kp X	   &kp C       &kp V        &kp B	&kp N   &kp M        &lt BKT  COMMA  &kp DOT  &kp FSLH
-       		       	   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
+			   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
 	    >;
 	};
 
 	lower_layer {
 	    bindings = <
-    &none   &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none      
-    &mo WIN &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     &none     &kp SQT   &kp RIGHT &kp LS(SQT)
-    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none      
+    &kp GRAVE   &PSCRN   &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none
+    &mo WIN     &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     &AT       &kp SQT   &kp RIGHT &kp LS(SQT)
+    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none
 		 &none &none &none	     &kp LA(RET) &kp BSPC &kp DEL
 	    >;
 	};
@@ -173,14 +173,14 @@ ZMK_HOLD_TAP(hmr,
 	    bindings = <
     &kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT     &kp CARET       &kp AMPS &kp STAR &kp LPAR &kp RPAR
     _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &kp HOME
-    UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	&kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END 
+    UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	&kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END
 	 &none &none &kp SPACE			  &none      &none      &none
 	    >;
 	};
 
 	num_layer {
 	    bindings = <
-    &kp LS(N3) &kp N7  &kp N8 &kp N9 &kp PLUS	  &none &none &none     &none   &none  
+    &kp LS(N3) &kp N7  &kp N8 &kp N9 &kp PLUS	  &none &none &none     &none   &none
     &kp LS(N8) &kp N4  &kp N5 &kp N6 &kp MINUS    &none &none &none     &none   &none
     &kp LS(N5) &kp N1  &kp N2 &kp N3 &kp EQUAL    &none &none &kp COMMA &kp DOT &none
 		 &kp N0 &kp RET &kp SPC	   &none &none &none
@@ -192,15 +192,15 @@ ZMK_HOLD_TAP(hmr,
     &none  &none &none &none &none            &kp F19 &kp F7  &kp F8  &kp F9  &none
     &none  &none &none &none &none            &kp F18 &kp F4  &kp F5  &kp F6  &none
     &none  &none &none &none &none            &none   &kp F1  &kp F2  &kp F3  &none
-	 &none &none &none		         &none &none  &none
+	 &none &none &none			 &none &none  &none
 	    >;
 	};
 
 	fr_layer {
 	    bindings = <
-    &none    &none &none    &none &none            &none &none &none   &none &none   
+    &none    &none &none    &none &none            &none &none &none   &none &none
     &kp LBKT &none &none    &none &none            &none &none &kp SQT TREMA &kp SQT
-    &none    &none &kp RBKT &none &none            &none &none &none   &none &none   
+    &none    &none &kp RBKT &none &none            &none &none &none   &none &none
 	 &none    &none &none		     &none &none &none
 	    >;
 	};
@@ -213,12 +213,12 @@ ZMK_HOLD_TAP(hmr,
 	  &none    &none &none		     &none &none  &none
 	    >;
 	};
-	
+
 	win_layer {
 	    bindings = <
     &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WS6 &kp WS7 &kp WS8 &kp WS9 &kp WS0
-    &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WSL &kp WSD &kp WSU &kp WSR &none  
-    &none   &none   &none    &none   &none            &none   &none   &none   &none   &none  
+    &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WSL &kp WSD &kp WSU &kp WSR &none
+    &none   &none   &none    &none   &none            &none   &none   &none   &none   &none
 	  &kp LGUI &none &kp L_CYCLE               &kp W_SWAP &none &none
 	    >;
 	};
@@ -238,7 +238,7 @@ ZMK_HOLD_TAP(hmr,
     &bt BT_CLR  &bt BT_CLR_ALL &bootloader &sys_reset &none        &to 0 &none &none &none &bt BT_CLR_ALL &none
     &bt BT_PRV  &bt BT_NXT     &none &none &none      &to 1        &none &none &none &none &none          &none
     &bt BT_DISC &none          &none &none &none      &to 2        &none &none &none &none &none          &none
-	 &none &none &none		              	  	   	 &none &none &none
+	 &none &none &none						 &none &none &none
 	    >;
 	};
 
@@ -247,7 +247,7 @@ ZMK_HOLD_TAP(hmr,
     &none &none &none	       &mmv MOVE_UP   &none           &mkp MB2  &none &none &none &none &none
     &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1  &none &none &none &none &none
     &none &none &none          &none          &none           &none     &none &none &none &none &none
-	  		  &none &none &none	    &none &none &none
+			  &none &none &none	    &none &none &none
 	    >;
 	};
 
