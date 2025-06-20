@@ -47,15 +47,14 @@
 #define W_SWAP  LC(LS(LA(RET)))
 #define L_CYCLE LC(LS(LA(SPACE)))
 
-// 0   1  2  3  4  5   6  7  8  9 10 11
-// 12 13 14 15 16 17  18 19 20 21 22 23
-// 24 25 26 27 28 29  30 31 32 33 34 35
-// 35 36 37 38 39 40  41 42 43 44 45 46
-//    47 48 49 50 51  52 53 54 55 56
+// 0   1  2  3  4   5  6  7  8  9
+// 10 11 12 13 14  15 16 17 18 19
+// 20 21 22 23 24  25 26 27 28 29
+//       30 31 32  33 34 35
 
-#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 35 36 37 38 39 40
-#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 41 42 43 44 45 46
-#define THUMBS 47 48 49 50 51 52 53 54 55 56
+#define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
+#define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
+#define THUMBS 30 31 32 33 34 35
 
 /* left-hand HRMs */
 ZMK_HOLD_TAP(hml,
@@ -136,98 +135,99 @@ ZMK_HOLD_TAP(hmr,
 
 	default_layer {
 	    bindings = <
-    &kp TAB	  &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN     &kp N5
-    &kp LSHIFT	  &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O &kp SQT
-    &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H        &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
-       &mt LGUI ESC  &lt MED ESC &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED   &kp RALT
+    &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN
+    &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
+    &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H        &lt BKT COMMA &kp DOT     &kp FSLH
+       		       	   &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC
 	    >;
 	};
 	
 	qwerty_layer {
 	    bindings = <
-    &kp TAB	  &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O       &kp P           &kp N5
-    &kp LSHIFT	  &hml LCTRL A &hml RALT S &hml LGUI D &hml LSHFT F &lt FRE G	&lt FRE H &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN &kp SQT
-    &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N     &kp M        &lt BKT COMMA &kp DOT     &kp FSLH        &kp ESC
-		   &lt LOW ESC &lt LOW SPACE &lt FUN RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC	    >;
+    &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O       &kp P   
+    &hml LCTRL A &hml RALT S &hml LGUI D &hml LSHFT F &lt FRE G	&lt FRE H &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN 
+    &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N     &kp M        &lt BKT COMMA &kp DOT     &kp FSLH
+		   &lt LOW ESC &lt LOW SPACE &lt FUN RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC	    
+            >;
 	};
 
 	gaming_layer {
 	    bindings = <
-    &kp TAB	  &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y   &kp U        &kp I        &kp O       &kp P           &kp N5
-    &kp LSHIFT	  &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J	     &kp K	  &kp L	      &kp SCLN	      &kp SQT
-    &kp LCTRL 	  &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N   &kp M        &lt BKT  COMMA  &kp DOT     &kp FSLH        &kp ESC
+    &kp Q	 &kp W	   &kp E       &kp R        &kp T	&kp Y   &kp U        &kp I        &kp O       &kp P      
+    &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J	     &kp K	  &kp L	      &kp SCLN	 
+    &kp Z	 &kp X	   &kp C       &kp V        &kp B	&kp N   &kp M        &lt BKT  COMMA  &kp DOT  &kp FSLH
 		  &lt LOW ESC &lt LOW SPACE &lt FUN RET              &lt NUM DEL &lt RAI RET &lt RAI BSPC
 	    >;
 	};
 
 	lower_layer {
 	    bindings = <
-    &none    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none       &none
-    &mo WIN  &none &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     &none     &kp SQT   &kp RIGHT &kp LS(SQT) &none
-    &none    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none       &none
+    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none      
+    &none &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     &none     &kp SQT   &kp RIGHT &kp LS(SQT)
+    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none      
 		 &none &none &none	     &kp DEL &kp LA(RET) &kp BSPC
 	    >;
 	};
 
 	raise_layer {
 	    bindings = <
-    &kp GRAVE &kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT     &kp CARET       &kp AMPS &kp STAR &kp LPAR &kp RPAR &kp EQUAL
-    &none     _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &kp HOME &kp PG_UP
-    _AT       UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	  &kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END  &kp PG_DN
+    &kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT     &kp CARET       &kp AMPS &kp STAR &kp LPAR &kp RPAR
+    _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &kp HOME
+    UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	&kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END 
 	 &none &kp SPACE &none			  &none      &none      &none
 	    >;
 	};
 
 	num_layer {
 	    bindings = <
-    &none &kp LS(N3) &kp N7  &kp N8 &kp N9 &kp PLUS	&none &none &none     &none   &none &none
-    &none &kp LS(N8) &kp N4  &kp N5 &kp N6 &kp MINUS    &none &none &none     &none   &none &none
-    &none &kp LS(N5) &kp N1  &kp N2 &kp N3 &kp EQUAL    &none &none &kp COMMA &kp DOT &none &none
+    &kp LS(N3) &kp N7  &kp N8 &kp N9 &kp PLUS	  &none &none &none     &none   &none  
+    &kp LS(N8) &kp N4  &kp N5 &kp N6 &kp MINUS    &none &none &none     &none   &none
+    &kp LS(N5) &kp N1  &kp N2 &kp N3 &kp EQUAL    &none &none &kp COMMA &kp DOT &none
 		 &kp N0 &kp SPC &kp RET	   &none &none &none
 	    >;
 	};
 
 	fun_layer {
 	    bindings = <
-    &none &none  &none &none &none &none            &kp F19 &kp F7  &kp F8  &kp F9  &none &none
-    &none &none  &none &none &none &none            &kp F18 &kp F4  &kp F5  &kp F6  &none &none
-    &none &none  &none &none &none &none            &none   &kp F1  &kp F2  &kp F3  &none &none
-	 &none &none &none		 &none &none  &none
+    &none  &none &none &none &none            &kp F19 &kp F7  &kp F8  &kp F9  &none
+    &none  &none &none &none &none            &kp F18 &kp F4  &kp F5  &kp F6  &none
+    &none  &none &none &none &none            &none   &kp F1  &kp F2  &kp F3  &none
+	 &none &none &none		         &none &none  &none
 	    >;
 	};
 
 	fr_layer {
 	    bindings = <
-    &none &none    &none &none    &none &none            &none &none &none   &none &none    &none
-    &none &kp LBKT &none &none    &none &none            &none &none &kp SQT TREMA &kp LBRC &none
-    &none &none    &none &kp RBKT &none &none            &none &none &none   &none &none    &none
+    &none    &none &none    &none &none            &none &none &none   &none &none   
+    &kp LBKT &none &none    &none &none            &none &none &kp SQT TREMA &kp LBRC
+    &none    &none &kp RBKT &none &none            &none &none &none   &none &none   
 	 &none    &none &none		     &none &none &none
 	    >;
 	};
 
 	media_layer {
 	    bindings = <
-    &none     &none &none &none &none &kp C_PREV       &none &none &none &none &none &none
-    &kp LSHFT &none &none &none &none &kp C_PP         &none &none &none &none &none &none
-    &none     &none &none &none &none &kp C_FF         &none &none &none &none &none &none
+    &none &none &none &none &kp C_PREV       &none &none &none &none &none
+    &none &none &none &none &kp C_PP         &none &none &none &none &none
+    &none &none &none &none &kp C_FF         &none &none &none &none &none
 	  &none    &none &none		     &none &none  &none
 	    >;
 	};
 	
 	win_layer {
 	    bindings = <
-    &none &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WS6 &kp WS7 &kp WS8 &kp WS9 &kp WS0 &none
-    &none &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WSL &kp WSD &kp WSU &kp WSR &none   &none
-    &none &none   &none   &none    &none   &none            &none   &none   &none   &none   &none   &none
+    &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WS6 &kp WS7 &kp WS8 &kp WS9 &kp WS0
+    &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WSL &kp WSD &kp WSU &kp WSR &none  
+    &none   &none   &none    &none   &none            &none   &none   &none   &none   &none  
 	  &kp LGUI &none &kp L_CYCLE               &kp W_SWAP &none &none
 	    >;
 	};
 
 	brackets_layer {
 	    bindings = <
-    &none &none  &none &kp LPAR &kp RPAR &kp EXCL    &none &none &none &none &none &none
-    &none &none  &none L_CL_BKT R_CL_BKT &kp EQUAL   &none &none &none &none &none &none
-    &none &none  &none L_SQ_BKT R_SQ_BKT _PIPE       &none &none &none &none &none &none
+    &none  &none &kp LPAR &kp RPAR &kp EXCL    &none &none &none &none &none
+    &none  &none L_CL_BKT R_CL_BKT &kp EQUAL   &none &none &none &none &none
+    &none  &none L_SQ_BKT R_SQ_BKT _PIPE       &none &none &none &none &none
 	      &none &none &none		 &none &none &none
 	    >;
 	};
@@ -235,18 +235,18 @@ ZMK_HOLD_TAP(hmr,
 
 	kb_layer {
 	    bindings = <
-    &bt BT_CLR  &bt BT_CLR_ALL &bootloader &sys_reset   &none  &to 0 &none &none &none &none &none &bt BT_CLR_ALL
-    &bt BT_PRV  &bt BT_NXT     &none &none &none  &to 1        &none &none &none &none &none       &none
-    &bt BT_DISC &none          &none &none &none  &to 2        &none &none &none &none &none       &none
-	 &none &none &none		          &none &none &none
+    &bt BT_CLR  &bt BT_CLR_ALL &bootloader &sys_reset &none        &to 0 &none &none &none &bt BT_CLR_ALL &none
+    &bt BT_PRV  &bt BT_NXT     &none &none &none      &to 1        &none &none &none &none &none          &none
+    &bt BT_DISC &none          &none &none &none      &to 2        &none &none &none &none &none          &none
+	 &none &none &none		              	  	   	 &none &none &none
 	    >;
 	};
 
 	mouse_layer {
 	    bindings = <
-    &none &none &none	       &mmv MOVE_UP   &none           &mkp MB2  &none &none &none &none &none      &none
-    &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1  &none &none &none &none &none      &none
-    &none &none &none          &none          &none           &none     &none &none &none &none &none      &none
+    &none &none &none	       &mmv MOVE_UP   &none           &mkp MB2  &none &none &none &none &none
+    &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1  &none &none &none &none &none
+    &none &none &none          &none          &none           &none     &none &none &none &none &none
 	  		  &none &none &none	    &none &none &none
 	    >;
 	};
