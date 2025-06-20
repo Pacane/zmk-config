@@ -138,7 +138,7 @@ ZMK_HOLD_TAP(hmr,
     &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN
     &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
     &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H        &lt BKT COMMA &kp DOT     &kp FSLH
-       		       	   &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC
+       		       	   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
 	    >;
 	};
 	
@@ -147,7 +147,7 @@ ZMK_HOLD_TAP(hmr,
     &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O       &kp P   
     &hml LCTRL A &hml RALT S &hml LGUI D &hml LSHFT F &lt FRE G	&lt FRE H &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN 
     &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N     &kp M        &lt BKT COMMA &kp DOT     &kp FSLH
-		   &lt LOW ESC &lt LOW SPACE &lt FUN RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC	    
+       		       	   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
             >;
 	};
 
@@ -156,7 +156,7 @@ ZMK_HOLD_TAP(hmr,
     &kp Q	 &kp W	   &kp E       &kp R        &kp T	&kp Y   &kp U        &kp I        &kp O       &kp P      
     &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J	     &kp K	  &kp L	      &kp SCLN	 
     &kp Z	 &kp X	   &kp C       &kp V        &kp B	&kp N   &kp M        &lt BKT  COMMA  &kp DOT  &kp FSLH
-		  &lt LOW ESC &lt LOW SPACE &lt FUN RET              &lt NUM DEL &lt RAI RET &lt RAI BSPC
+       		       	   &lt LOW ESC &mo LOW &lt FUN SPACE             &lt NUM RET &lt RAI BSPC &lt RAI DEL
 	    >;
 	};
 
@@ -165,7 +165,7 @@ ZMK_HOLD_TAP(hmr,
     &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none      
     &none &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     &none     &kp SQT   &kp RIGHT &kp LS(SQT)
     &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none      
-		 &none &none &none	     &kp DEL &kp LA(RET) &kp BSPC
+		 &none &none &none	     &kp LA(RET) &kp BSPC &kp DEL
 	    >;
 	};
 
@@ -174,7 +174,7 @@ ZMK_HOLD_TAP(hmr,
     &kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT     &kp CARET       &kp AMPS &kp STAR &kp LPAR &kp RPAR
     _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &kp HOME
     UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	&kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END 
-	 &none &kp SPACE &none			  &none      &none      &none
+	 &none &none &kp SPACE			  &none      &none      &none
 	    >;
 	};
 
@@ -183,7 +183,7 @@ ZMK_HOLD_TAP(hmr,
     &kp LS(N3) &kp N7  &kp N8 &kp N9 &kp PLUS	  &none &none &none     &none   &none  
     &kp LS(N8) &kp N4  &kp N5 &kp N6 &kp MINUS    &none &none &none     &none   &none
     &kp LS(N5) &kp N1  &kp N2 &kp N3 &kp EQUAL    &none &none &kp COMMA &kp DOT &none
-		 &kp N0 &kp SPC &kp RET	   &none &none &none
+		 &kp N0 &kp RET &kp SPC	   &none &none &none
 	    >;
 	};
 
