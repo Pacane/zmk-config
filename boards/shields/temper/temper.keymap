@@ -162,7 +162,7 @@ ZMK_HOLD_TAP(hmr,
 	lower_layer {
 	    bindings = <
     &kp GRAVE   &PSCRN   &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none
-    &mo WIN     &kp LEFT &kp DOWN  &kp RIGHT &none	_TILDE    &AT       &kp SQT   &kp RIGHT &kp LS(SQT)
+    &mo WIN     &kp LEFT &kp DOWN  &kp RIGHT &none	&_TILDE    &AT       &kp SQT   &kp RIGHT &kp LS(SQT)
     &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none
 		 &none &none &none	     &kp LA(RET) &kp BSPC &kp DEL
 	    >;
