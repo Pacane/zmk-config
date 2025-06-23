@@ -234,9 +234,9 @@ ZMK_HOLD_TAP(hmr,
 
 	kb_layer {
 	    bindings = <
-    &bt BT_CLR  &bt BT_CLR_ALL &bootloader &sys_reset &none        &to 0 &none &none &none &bt BT_CLR_ALL &none
-    &bt BT_PRV  &bt BT_NXT     &none &none &none      &to 1        &none &none &none &none &none          &none
-    &bt BT_DISC &none          &none &none &none      &to 2        &none &none &none &none &none          &none
+    &bt BT_CLR  &bt BT_CLR_ALL &bootloader &sys_reset &none        &to 0 &none &none &none &bt BT_CLR_ALL
+    &bt BT_PRV  &bt BT_NXT     &none       &none      &to 1        &none &none &none &none &none         
+    &bt BT_DISC &none          &none       &none      &to 2        &none &none &none &none &none         
 	 &none &none &none						 &none &none &none
 	    >;
 	};
