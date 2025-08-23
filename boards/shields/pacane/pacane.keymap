@@ -82,35 +82,57 @@ ZMK_HOLD_TAP(hmr,
 
 / {
     macros {
-        cced: cced {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp RBKT>
-                , <&macro_tap &kp C>
-                ;
-        };
+	cced: cced {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp RBKT>
+		, <&macro_tap &kp C>
+		;
+	};
 
-        passwd: passwd {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp M>
-                , <&macro_tap &kp O>
-                , <&macro_tap &kp T>
-                , <&macro_tap &kp D>
-                , <&macro_tap &kp E>
-                , <&macro_tap &kp P>
-                , <&macro_tap &kp A>
-                , <&macro_tap &kp S>
-                , <&macro_tap &kp S>
-                , <&macro_tap &kp E>
-                , <&macro_tap &kp N1>
-                , <&macro_tap &kp N2>
-                , <&macro_tap &kp N3>
-                , <&macro_tap &kp N4>
-                ;
-        };
+	email: email {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp J>
+		, <&macro_tap &kp O>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp L>
+		, <&macro_tap &kp RA(N2)>
+		, <&macro_tap &kp B>
+		, <&macro_tap &kp R>
+		, <&macro_tap &kp A>
+		, <&macro_tap &kp V>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp R>
+		, <&macro_tap &kp DOT>
+		, <&macro_tap &kp N>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp T>
+		;
+	};
+
+	passwd: passwd {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp M>
+		, <&macro_tap &kp O>
+		, <&macro_tap &kp T>
+		, <&macro_tap &kp D>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp P>
+		, <&macro_tap &kp A>
+		, <&macro_tap &kp S>
+		, <&macro_tap &kp S>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp N1>
+		, <&macro_tap &kp N2>
+		, <&macro_tap &kp N3>
+		, <&macro_tap &kp N4>
+		;
+	};
     };
 };
 
@@ -139,11 +161,11 @@ ZMK_HOLD_TAP(hmr,
     &kp ESC	  &kp N1       &kp N2	   &kp N3      &kp N4       &kp N5	&kp N6    &kp N7       &kp N8        &kp N9      &kp N0       &kp N4
     &kp TAB	  &kp Q	       &kp W	   &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN     &kp N5
     &kp LSHIFT	  &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O &kp SQT
-    &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H        &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
+    &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp D        &kp V	&kp K     &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
        &mt LGUI ESC  &lt MED ESC &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED   &kp RALT
 	    >;
 	};
-	
+
 	qwerty_layer {
 	    bindings = <
     &kp ESC	  &kp N1       &kp N2	   &kp N3      &kp N4       &kp N5	&kp N6    &kp N7       &kp N8        &kp N9      &kp N0          &kp N4
@@ -156,21 +178,21 @@ ZMK_HOLD_TAP(hmr,
 
 	gaming_layer {
 	    bindings = <
-    &kp ESC	  &kp N1       &kp N2	   &kp N3      &kp N4       &kp N5	&kp N6  &kp N7       &kp N8       &kp N9      &kp N0          &kp N4
-    &kp TAB	  &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y   &kp U        &kp I        &kp O       &kp P           &kp N5
-    &kp LSHIFT	  &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J	     &kp K	  &kp L	      &kp SCLN	      &kp SQT
-    &kp LCTRL 	  &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N   &kp M        &lt BKT  COMMA  &kp DOT     &kp FSLH        &kp ESC
-		  &kp LGUI  &mo MED  &lt LOW ESC &lt LOW SPACE &lt FUN RET              &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED   &kp RALT
+    &kp ESC	  &kp N1       &kp N2	   &kp N3      &kp N4       &kp N5	&kp N6    &kp N7       &kp N8        &kp N9  &kp N0   &kp N4
+    &kp TAB	  &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O   &kp P    &kp N5
+    &kp LSHIFT	  &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J        &kp K	     &kp L   &kp SCLN &kp SQT
+    &kp LCTRL	  &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N     &kp M        &lt BKT COMMA &kp DOT &kp FSLH &kp ESC
+		  &kp LGUI  &mo MED  &lt LOW ESC &lt LOW SPACE &lt FUN RET              &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED  &kp RALT
 	    >;
 	};
 
 	lower_layer {
 	    bindings = <
-    &mo KBM  &none &none    &none     &none     &none	&none     &none     &none     &none     &none       &none
-    &none    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X) &none       &none
-    &mo WIN  &none &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     &none     &kp SQT   &kp RIGHT &kp LS(SQT) &none
-    &none    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &none       &none
-		 &none  &none  &none &none &none	     &kp DEL &kp LA(RET) &kp BSPC &mo KBM  &mo KBM 
+    &mo KBM  &none &none    &none     &none     &none	&none     &none     &none     &none         &none       &none
+    &none    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X)     &none       &none
+    &mo WIN  &none &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     _AT       &kp GRAVE &kp RA(GRAVE) &kp LS(SQT) &none
+    &none    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END       &none       &none
+		 &none  &none  &none &none &none	     &kp DEL &kp LA(RET) &kp BSPC &mo KBM  &mo KBM
 	    >;
 	};
 
@@ -180,7 +202,7 @@ ZMK_HOLD_TAP(hmr,
     &kp GRAVE &kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT     &kp CARET       &kp AMPS &kp STAR &kp LPAR &kp RPAR &kp EQUAL
     &none     _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &kp HOME &kp PG_UP
     _AT       UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	  &kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END  &kp PG_DN
-		 &passwd &none  &none &kp SPACE &none			  &none      &none      &none     &none      &mo KBM 
+		 &email &passwd  &none &kp SPACE &none			  &none      &none      &none     &none      &mo KBM
 	    >;
 	};
 
@@ -220,17 +242,17 @@ ZMK_HOLD_TAP(hmr,
     &none     &none &none &none &none &kp C_PREV       &none &none &none &none &none &none
     &kp LSHFT &none &none &none &none &kp C_PP         &none &none &none &none &none &none
     &none     &none &none &none &none &kp C_FF         &none &none &none &none &none &none
-	  &none    &none &none    &none &none		     &none &none  &none  &none  &none 
+	  &none    &none &none    &none &none		     &none &none  &none  &none  &none
 	    >;
 	};
-	
+
 	win_layer {
 	    bindings = <
     &none &none   &none   &none    &none   &none            &none   &none   &none   &none   &none   &none
     &none &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WS6 &kp WS7 &kp WS8 &kp WS9 &kp WS0 &none
     &none &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WSL &kp WSD &kp WSU &kp WSR &none   &none
     &none &none   &none   &none    &none   &none            &none   &none   &none   &none   &none   &none
-	  &none &none &kp LGUI &none &kp L_CYCLE               &kp W_SWAP &none &none &none &none 
+	  &none &none &kp LGUI &none &kp L_CYCLE               &kp W_SWAP &none &none &none &none
 	    >;
 	};
 
@@ -240,7 +262,7 @@ ZMK_HOLD_TAP(hmr,
     &none &none  &none &kp LPAR &kp RPAR &kp EXCL    &none &none &none &none &none &none
     &none &none  &none L_CL_BKT R_CL_BKT &kp EQUAL   &none &none &none &none &none &none
     &none &none  &none L_SQ_BKT R_SQ_BKT _PIPE       &none &none &none &none &none &none
-	      &none &none &none &none &none		 &none &none &none &none &none 
+	      &none &none &none &none &none		 &none &none &none &none &none
 	    >;
 	};
 
@@ -251,7 +273,7 @@ ZMK_HOLD_TAP(hmr,
     &bt BT_CLR  &bt BT_CLR_ALL &none &none &none  &to 1     &none &none &none &none &none      &bt BT_CLR_ALL
     &bt BT_PRV  &bt BT_NXT     &none &none &none  &to 2     &none &none &none &none &none      &none
     &bt BT_DISC &none          &none &none &none  &none     &none &none &none &none &none      &none
-	  &none  &none  &none &none &none		      &none &none &none &none &none 
+	  &none  &none  &none &none &none		      &none &none &none &none &none
 	    >;
 	};
 
@@ -261,7 +283,7 @@ ZMK_HOLD_TAP(hmr,
     &none &none &none	       &mmv MOVE_UP   &none           &mkp MB2  &none &none &none &none &none      &none
     &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1  &none &none &none &none &none      &none
     &none &none &none          &none          &none           &none     &none &none &none &none &none      &none
-	  		    &none &none  &none &none &none	    &none &none &none &none &none
+			    &none &none  &none &none &none	    &none &none &none &none &none
 	    >;
 	};
 
