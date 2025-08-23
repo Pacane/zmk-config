@@ -107,9 +107,12 @@ ZMK_HOLD_TAP(hmr,
 		, <&macro_tap &kp E>
 		, <&macro_tap &kp R>
 		, <&macro_tap &kp DOT>
-		, <&macro_tap &kp N>
+		, <&macro_tap &kp H>
 		, <&macro_tap &kp E>
+		, <&macro_tap &kp A>
+		, <&macro_tap &kp L>
 		, <&macro_tap &kp T>
+		, <&macro_tap &kp H>
 		;
 	};
 
