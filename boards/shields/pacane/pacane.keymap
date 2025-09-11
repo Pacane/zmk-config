@@ -167,7 +167,7 @@ ZMK_HOLD_TAP(hmr,
     &kp TAB	   &kp Q	&kp W	    &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN     &kp N5
     &mt LSHIFT TAB &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O &kp SQT
     &mt LCTRL TAB  &kp Z	&kp X	    &kp C       &kp D        &kp V	&kp K     &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH     &kp ESC
-       &mt LGUI ESC  &lt MED ESC &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt NUM BSPC &mo MED   &kp RALT
+       &mt LGUI ESC  &lt MED ESC &lt LOW ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt MOU BSPC &mo MED   &kp RALT
 	    >;
 	};
 
