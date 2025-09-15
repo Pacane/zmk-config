@@ -91,7 +91,7 @@ ZMK_HOLD_TAP(hmr,
 
 	td_tab_caps_hold_shift: td_tab_caps_hold_shift {
 	  compatible = "zmk,behavior-hold-tap";
-	  #binding-cells = <0>;
+	  binding-cells = <2>;
 
 	   // optional ergonomics (similar to your hml/hmr)
 	  flavor = "balanced";
