@@ -82,7 +82,7 @@ ZMK_HOLD_TAP(hmr,
 
 / {
     behaviors {
-	caps_shift: tap_dance_mod_tap {
+	caps_tab: tap_dance_mod_tap {
 	    compatible = "zmk,behavior-tap-dance";
 	    #binding-cells = <0>;
 	    tapping-term-ms = <200>;
