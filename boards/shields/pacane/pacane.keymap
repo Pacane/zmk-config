@@ -86,7 +86,7 @@ ZMK_HOLD_TAP(hmr,
 	  compatible = "zmk,behavior-tap-dance";
 	  #binding-cells = <0>;
 	  tapping-term-ms = <220>;
-	  bindings = <&kp TAB>, <&kp CAPSLOCK>;
+	  bindings = <&kp TAB &kp CAPSLOCK>;
 	};
 
 	td_tab_caps_hold_shift: td_tab_caps_hold_shift {
