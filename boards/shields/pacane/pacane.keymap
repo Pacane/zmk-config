@@ -86,8 +86,7 @@ ZMK_HOLD_TAP(hmr,
 	    compatible = "zmk,behavior-tap-dance";
 	    #binding-cells = <0>;
 	    tapping-term-ms = <200>;
-            bindings = <&kp TAB>, <&kp CAPS_LOCK>;
-            hold-trigger-key-positions = <KEYS_R THUMBS>;
+            bindings = <&kp TAB>, <&kp CAPSLOCK>;
             hold-bindings = <&kp LSHIFT>;
 	};
     };
