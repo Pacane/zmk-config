@@ -86,7 +86,7 @@ ZMK_HOLD_TAP(hmr,
 	  compatible = "zmk,behavior-tap-dance";
 	  #binding-cells = <0>;
 	  tapping-term-ms = <220>;
-	  bindings = <&kp TAB>, <&kp CAPS_LOCK>;
+	  bindings = <&kp TAB>, <&kp CAPSLOCK>;
 	};
 
 	td_tab_caps_hold_shift: td_tab_caps_hold_shift {
@@ -99,13 +99,6 @@ ZMK_HOLD_TAP(hmr,
 	  quick-tap-ms = <175>;
 	  require-prior-idle-ms = <150>;
 	  bindings = <&td_tab_caps>, <&kp LSHIFT>;
-	};
-	caps_tab: tap_dance_mod_tap {
-	    compatible = "zmk,behavior-tap-dance";
-	    #binding-cells = <0>;
-	    tapping-term-ms = <200>;
-	    bindings = <&kp TAB>, <&kp CAPSLOCK>;
-	    hold-bindings = <&kp LSHIFT>;
 	};
     };
 
