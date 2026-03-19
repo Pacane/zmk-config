@@ -1,0 +1,9 @@
+file_format: "2"
+id: trackball
+name: Trackball
+type: shield
+requires:
+  - pro_micro
+features:
+  - keys: false
+  - pointing: true
