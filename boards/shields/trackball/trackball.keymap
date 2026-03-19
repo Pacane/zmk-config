@@ -1,11 +1,44 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
+
+#define DEF 0
+#define SCR 1
+#define ZOM 2
 
 / {
     keymap {
         compatible = "zmk,keymap";
+
         default_layer {
-            bindings = <&none>;
+            bindings = <
+                &mkp MB1    /* left click   */
+                &mkp MB3    /* middle click  */
+                &mkp MB2    /* right click   */
+                &tog SCR    /* toggle scroll */
+                &tog ZOM    /* toggle zoom   */
+            >;
+        };
+
+        scroll_layer {
+            bindings = <
+                &mkp MB1
+                &mkp MB3
+                &mkp MB2
+                &tog SCR
+                &tog ZOM
+            >;
+        };
+
+        zoom_layer {
+            bindings = <
+                &mkp MB1
+                &mkp MB3
+                &mkp MB2
+                &tog SCR
+                &tog ZOM
+            >;
         };
     };
 };
