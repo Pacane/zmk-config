@@ -1,0 +1,17 @@
+# West workspace
+.west/
+
+# Fetched by west update
+/zmk/
+/modules/
+/zmk-helpers/
+
+# Zephyr (fetched by west, but zephyr/module.yml is tracked)
+/zephyr/*
+!/zephyr/module.yml
+
+# Build output
+/build/
+
+# Tool versions (local Python config for west)
+.tool-versions
