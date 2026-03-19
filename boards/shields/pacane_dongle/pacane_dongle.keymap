@@ -1,0 +1,333 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include "zmk-helpers/helper.h"
+#include <dt-bindings/zmk/mouse.h>
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 2500
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
+
+#define L_SQ_BKT &kp RA(LBKT)
+#define R_SQ_BKT &kp RA(RBKT)
+
+#define L_CL_BKT &kp RA(SQT)
+#define R_CL_BKT &kp RA(BSLH)
+
+#define L_CHEV &kp BSLH
+#define R_CHEV &kp LS(BSLH)
+
+#define _PLUS &kp LS(EQUAL)
+#define _PIPE &kp LS(GRAVE)
+#define UNDSCR &kp LS(MINUS)
+#define MULTPL &kp LS(N8)
+#define _AT &kp RA(N2)
+#define AMPRS &kp LS(N7)
+#define TREMA &kp LS(RBRC)
+#define TILDE &kp RA(SCLN)
+
+#define WS1 LC(LS(LA(N1)))
+#define WS2 LC(LS(LA(N2)))
+#define WS3 LC(LS(LA(N3)))
+#define WS4 LC(LS(LA(N4)))
+#define WS5 LC(LS(LA(N5)))
+#define WS6 LC(LS(LA(N6)))
+#define WS7 LC(LS(LA(N7)))
+#define WS8 LC(LS(LA(N8)))
+#define WS9 LC(LS(LA(N9)))
+#define WS0 LC(LS(LA(N0)))
+
+#define WSL LC(LS(LA(H)))
+#define WSD LC(LS(LA(J)))
+#define WSU LC(LS(LA(K)))
+#define WSR LC(LS(LA(L)))
+
+#define T_FLOAT LC(LS(LA(T)))
+#define W_SWAP  LC(LS(LA(RET)))
+#define L_CYCLE LC(LS(LA(SPACE)))
+
+// 0   1  2  3  4  5   6  7  8  9 10 11
+// 12 13 14 15 16 17  18 19 20 21 22 23
+// 24 25 26 27 28 29  30 31 32 33 34 35
+// 35 36 37 38 39 40  41 42 43 44 45 46
+//    47 48 49 50 51  52 53 54 55 56
+
+#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 35 36 37 38 39 40
+#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 41 42 43 44 45 46
+#define THUMBS 47 48 49 50 51 52 53 54 55 56
+
+/* left-hand HRMs */
+ZMK_HOLD_TAP(hml,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;                // repeat on tap-into-hold
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <KEYS_R THUMBS>;
+    hold-trigger-on-release;             // delay positional check until key-release
+)
+
+/* right-hand HRMs */
+ZMK_HOLD_TAP(hmr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;                // repeat on tap-into-hold
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <KEYS_L THUMBS>;
+    hold-trigger-on-release;             // delay positional check until key-release
+)
+
+/ {
+    behaviors {
+	td_tab_caps: td_tab_caps {
+	  compatible = "zmk,behavior-tap-dance";
+	  #binding-cells = <0>;
+	  tapping-term-ms = <220>;
+	  bindings = <&kp TAB>, <&kp CAPSLOCK>;
+	};
+
+	// Hold-Tap wrapper: HOLD=Shift, TAP=the tap-dance above
+	td_tab_caps_hold_shift: td_tab_caps_hold_shift {
+	  compatible = "zmk,behavior-hold-tap";
+	  #binding-cells = <2>;                    // REQUIRED for hold-tap
+
+	  // (optional ergonomics—tune like your hml/hmr)
+	  flavor = "balanced";
+	  tapping-term-ms = <220>;
+	  quick-tap-ms = <175>;
+	  require-prior-idle-ms = <150>;
+	  // hold-trigger-on-release;
+	  // hold-trigger-key-positions = <KEYS_R THUMBS>;
+
+	  // IMPORTANT: behaviors only here (no params)
+	  // order = <HOLD_BEHAVIOR>, <TAP_BEHAVIOR>
+	  bindings = <&kp>, <&td_tab_caps>;
+	};
+    };
+
+    macros {
+	cced: cced {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp RBKT>
+		, <&macro_tap &kp C>
+		;
+	};
+
+	email: email {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp J>
+		, <&macro_tap &kp O>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp L>
+		, <&macro_tap &kp RA(N2)>
+		, <&macro_tap &kp B>
+		, <&macro_tap &kp R>
+		, <&macro_tap &kp A>
+		, <&macro_tap &kp V>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp R>
+		, <&macro_tap &kp DOT>
+		, <&macro_tap &kp H>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp A>
+		, <&macro_tap &kp L>
+		, <&macro_tap &kp T>
+		, <&macro_tap &kp H>
+		;
+	};
+
+	passwd: passwd {
+	    compatible = "zmk,behavior-macro";
+	    #binding-cells = <0>;
+	    bindings
+		= <&macro_tap &kp M>
+		, <&macro_tap &kp O>
+		, <&macro_tap &kp T>
+		, <&macro_tap &kp D>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp P>
+		, <&macro_tap &kp A>
+		, <&macro_tap &kp S>
+		, <&macro_tap &kp S>
+		, <&macro_tap &kp E>
+		, <&macro_tap &kp N1>
+		, <&macro_tap &kp N2>
+		, <&macro_tap &kp N3>
+		, <&macro_tap &kp N4>
+		, <&macro_tap &kp N5>
+		;
+	};
+    };
+};
+
+#define COL 0
+#define QWE 1
+#define GAM 2
+#define LOW 3
+#define RAI 4
+#define NUM 5
+#define FUN 6
+#define FRE 7
+#define MED 8
+#define WIN 9
+#define BKT 10
+#define KBM 11
+#define MOU 12
+#define NMP 13
+
+
+/ {
+    keymap {
+	compatible = "zmk,keymap";
+
+
+	default_layer {
+	    bindings = <
+    &kp ESC	   &kp N1       &kp N2	    &kp N3      &kp N4       &kp N5	&kp N6    &kp N7       &kp N8        &kp N9      &kp N0       &kp N4
+    &kp TAB	   &kp Q	&kp W	    &kp F       &kp P        &kp B	&kp J     &kp L        &kp U         &kp Y       &kp SCLN     &kp N5
+   &td_tab_caps_hold_shift LSHIFT 0 &hml LCTRL A &hml RALT R &hml LGUI S &hml LSHFT T &lt FRE G	&lt FRE M &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O &kp SQT
+    &mt LCTRL TAB  &kp Z	&kp X	    &kp C       &kp D        &kp V	&kp K     &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH     &kp LALT
+       &mt LGUI ESC  &lt MED ESC &lt NMP ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt MOU BSPC &mo MED   &kp LALT
+	    >;
+	};
+
+	qwerty_layer {
+	    bindings = <
+    &kp ESC	  &kp N1       &kp N2	   &kp N3      &kp N4       &kp N5	&kp N6    &kp N7       &kp N8        &kp N9      &kp N0          &kp N4
+    &kp TAB	  &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O       &kp P           &kp N5
+    &kp LSHIFT	  &hml LCTRL A &hml RALT S &hml LGUI D &hml LSHFT F &lt FRE G	&lt FRE H &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN &kp SQT
+    &mt LCTRL TAB &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N     &kp M        &lt BKT COMMA &kp DOT     &kp FSLH        &kp ESC
+       &mt LGUI ESC  &lt MED ESC &lt NMP ESC &lt LOW SPACE &lt FUN  RET             &lt NUM DEL &lt RAI RET &lt MOU BSPC &mo MED   &kp LALT
+	    >;
+	};
+
+	gaming_layer {
+	    bindings = <
+    &kp ESC	  &kp N1       &kp N2	   &kp N3      &kp N4       &kp N5	&kp N6    &kp N7       &kp N8        &kp N9  &kp N0   &kp N4
+    &kp TAB	  &kp Q	       &kp W	   &kp E       &kp R        &kp T	&kp Y     &kp U        &kp I         &kp O   &kp P    &kp N5
+    &kp LSHIFT	  &kp A        &kp S	   &kp D       &kp F	    &lt FRE G	&lt FRE H &kp J        &kp K	     &kp L   &kp SCLN &kp SQT
+    &kp LCTRL	  &kp Z	       &kp X	   &kp C       &kp V        &kp B	&kp N     &kp M        &lt BKT COMMA &kp DOT &kp FSLH &kp ESC
+		  &kp LGUI  &mo MED  &lt NMP ESC &lt LOW SPACE &lt FUN RET              &lt NUM DEL &lt RAI RET &lt RAI BSPC &mo MED  &kp RALT
+	    >;
+	};
+
+	lower_layer {
+	    bindings = <
+    &mo KBM  &none &none    &none     &none     &none	&none     &none     &none     &none         &none       &none
+    &none    &none &none    &kp UP    &none     &none	&kp LG(Z) &kp LG(V) &kp LG(C) &kp LG(X)     &none       &none
+    &mo WIN  &none &kp LEFT &kp DOWN  &kp RIGHT &none	TILDE     _AT       &kp GRAVE &kp RA(GRAVE) &kp LS(SQT) &none
+    &none    &none &none    &none     &none     &none	&kp HOME  &kp PG_DN &kp PG_UP &kp END       &none       &none
+		 &none  &none  &none &none &none	     &kp DEL &kp LA(RET) &kp BSPC &mo KBM  &mo KBM
+	    >;
+	};
+
+	raise_layer {
+	    bindings = <
+    &kp PSCRN &none    &none     &none     &none    &none	  &none           &none    &none    &none    &none    &none
+    &kp GRAVE &kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT     &kp CARET       &kp AMPS &kp STAR &kp LPAR &kp RPAR &kp EQUAL
+    &none     _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &kp HOME &kp PG_UP
+    _AT       UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	  &kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END  &kp PG_DN
+		 &email &passwd  &none &kp SPACE &none			  &none      &none      &none     &none      &mo KBM
+	    >;
+	};
+
+	num_layer {
+	    bindings = <
+    &none &none      &kp N1  &kp N2 &kp N3 &none	&none &none &none     &none   &none &none
+    &none &kp LS(N3) &kp N7  &kp N8 &kp N9 &kp PLUS	&none &none &none     &none   &none &none
+    &none &kp LS(N8) &kp N4  &kp N5 &kp N6 &kp MINUS    &none &none &none     &none   &none &none
+    &none &kp LS(N5) &kp N1  &kp N2 &kp N3 &kp EQUAL    &none &none &kp COMMA &kp DOT &none &none
+		 &none &none &kp N0 &kp SPC &kp RET	   &none &none &none &none &none
+	    >;
+	};
+
+	fun_layer {
+	    bindings = <
+    &none &none  &none &none &none &none            &none   &kp F10 &kp F11 &kp F12 &none &none
+    &none &none  &none &none &none &none            &kp F19 &kp F7  &kp F8  &kp F9  &none &none
+    &none &none  &none &none &none &none            &kp F18 &kp F4  &kp F5  &kp F6  &none &none
+    &none &none  &none &none &none &none            &none   &kp F1  &kp F2  &kp F3  &none &none
+	  &none  &none  &none &none &none		 &none &none  &none  &none  &none
+	    >;
+	};
+
+	fr_layer {
+	    bindings = <
+    &none &none    &none &none    &none &none            &none &none &none   &none &none    &none
+    &none &none    &none &none    &none &none            &none &none &none   &none &none    &none
+    &none &kp LBKT &none &none    &none &none            &none &none &kp SQT TREMA &kp LBRC &none
+    &none &none    &none &kp RBKT &none &none            &none &none &none   &none &none    &none
+	  &none    &none &none    &none &none		     &none &none &none &none &none
+	    >;
+	};
+
+	media_layer {
+	    bindings = <
+    &kp PSCRN &none &none &none &none &none            &none &none &none &none &none &kp PSCRN
+    &none     &none &none &none &none &kp C_PREV       &none &none &none &none &none &none
+    &kp LSHFT &none &none &none &none &kp C_PP         &none &none &none &none &none &none
+    &none     &none &none &none &none &kp C_FF         &none &none &none &none &none &none
+	  &none    &none &none    &none &none		     &none &none  &none  &none  &none
+	    >;
+	};
+
+	win_layer {
+	    bindings = <
+    &none &none   &none   &none    &none   &none            &none   &none   &none   &none   &none   &none
+    &none &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WS6 &kp WS7 &kp WS8 &kp WS9 &kp WS0 &none
+    &none &kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5          &kp WSL &kp WSD &kp WSU &kp WSR &none   &none
+    &none &none   &none   &none    &none   &none            &none   &none   &none   &none   &none   &none
+	  &none &none &kp LGUI &none &kp L_CYCLE               &kp W_SWAP &none &none &none &none
+	    >;
+	};
+
+	brackets_layer {
+	    bindings = <
+    &none &none  &none L_CHEV   R_CHEV   &none       &none &none &none &none &none &none
+    &none &none  &none &kp LPAR &kp RPAR &kp EXCL    &none &none &none &none &none &none
+    &none &none  &none L_CL_BKT R_CL_BKT &kp EQUAL   &none &none &none &none &none &none
+    &none &none  &none L_SQ_BKT R_SQ_BKT _PIPE       &none &none &none &none &none &none
+	      &none &none &none &none &none		 &none &none &none &none &none
+	    >;
+	};
+
+
+	kb_layer {
+	    bindings = <
+    &bootloader &sys_reset     &none &none &none  &to 0     &none          &none &none &none &sys_reset &bootloader
+    &bt BT_CLR  &bt BT_CLR_ALL &none &none &none  &to 1     &studio_unlock &none &none &none &none      &bt BT_CLR_ALL
+    &bt BT_PRV  &bt BT_NXT     &none &none &none  &to 2     &none &none &none &none &none      &none
+    &bt BT_DISC &none          &none &none &none  &none     &none &none &none &none &none      &none
+	  &none  &none  &none &none &none		      &none &none &none &none &none
+	    >;
+	};
+
+	mouse_layer {
+	    bindings = <
+    &none      &none &none	    &none          &none           &none     &none &none        &none          &none    &none &none
+    &none      &none &none	    &mmv MOVE_UP   &none           &mkp MB2  &none &none        &none          &none    &none &none
+    &kp LSHIFT &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1  &none &mkp MB1     &mkp MB2       &mkp MB3 &none &none
+    &none      &none &none          &none          &none           &none     &none &msc SCRL_UP &msc SCRL_DOWN &none    &none &none
+			    &none &none  &kp LGUI &mkp MB4 &mkp MB5	    &none &none &none &none &none
+	    >;
+	};
+
+	numpad_layer {
+	    bindings = <
+    &none &none &none &none &none &none    &none     &none   &none  &none   &none     &none
+    &none &none &none &none &none &none    &none     &kp N7  &kp N8 &kp N9  &kp PLUS  &none
+    &none &none &none &none &none &none    &kp DOT   &kp N4  &kp N5 &kp N6  &kp MINUS &none
+    &none &none &none &none &none &none    &kp COMMA &kp N1  &kp N2 &kp N3  &kp EQUAL &none
+	  &none &none &none &none &none        &kp DOT  &kp RET &kp N0  &none   &none
+	    >;
+	};
+
+    };
+};

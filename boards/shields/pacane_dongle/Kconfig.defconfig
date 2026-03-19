@@ -1,0 +1,19 @@
+if SHIELD_PACANE_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Pacane"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+endif
+
+if SHIELD_PACANE_DONGLE || SHIELD_PACANE_DONGLE_LEFT
+
+config ZMK_SPLIT
+    default y
+
+endif

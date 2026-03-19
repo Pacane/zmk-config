@@ -1,0 +1,11 @@
+file_format: "2"
+id: pacane_dongle
+name: Pacane Dongle
+type: shield
+requires:
+  - pro_micro
+features:
+  - keys
+siblings:
+  - pacane_dongle
+  - pacane_dongle_left
