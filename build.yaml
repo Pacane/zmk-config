@@ -25,8 +25,6 @@ include:
   - board: nice_nano/nrf52840/zmk
     shield: settings_reset
   - board: nice_nano/nrf52840/zmk
-    shield: pacane_macro
-  - board: nice_nano/nrf52840/zmk
     shield: pacane_corne_left
   - board: nice_nano/nrf52840/zmk
     shield: pacane_corne_right
