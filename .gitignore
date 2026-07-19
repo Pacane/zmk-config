@@ -15,3 +15,4 @@
 
 # Tool versions (local Python config for west)
 .tool-versions
+/.agent-shell/
