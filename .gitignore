@@ -16,3 +16,7 @@
 # Tool versions (local Python config for west)
 .tool-versions
 /.agent-shell/
+/zmk-pmw3610-driver/
+/optional/
+/firmware_output/
+/.claude/
