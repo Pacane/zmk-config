@@ -222,7 +222,7 @@ ZMK_HOLD_TAP(hmr,
 	raise_layer {
 	    bindings = <
     &kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT     &kp CARET       &kp AMPS &kp STAR &kp LPAR &kp RPAR
-    _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &kp HOME
+    _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR      &kp RPAR        R_CL_BKT R_SQ_BKT R_CHEV   &lt WIN HOME
     UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL	&kp PAUSE_BREAK &kp F12  &kp INS  &kp DEL  &kp END
 	 &email &passwd &kp SPACE			  &none      &none      &none
 	    >;
