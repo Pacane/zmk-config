@@ -81,6 +81,9 @@
 #define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33
 #define THUMBS 34 35 36 37 38 39
 
+/* tap, then re-press within this window and hold, to auto-repeat the tap key (BSPC, SPACE...) */
+&lt { quick-tap-ms = <175>; };
+
 /* left-hand HRMs */
 ZMK_HOLD_TAP(hml,
     flavor = "balanced";
