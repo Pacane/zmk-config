@@ -1,0 +1,11 @@
+file_format: "1"
+id: pacino
+name: Pacino
+type: shield
+url: https://github.com/Pacane/pacino
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - pacino_left
+  - pacino_right

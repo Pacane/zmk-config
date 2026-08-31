@@ -1,0 +1,12 @@
+/*
+ * Pacino default keymap -- picks one of the two variants in this directory:
+ *
+ *   pacino_temper.keymap   the temper keymap on the 36 shared keys; the pacane's outer-column
+ *                          keys (shift/caps, ctrl+TAB, è, LALT) on the four extras
+ *   pacino_pacane.keymap   the pacane keymap: its 3x5 block and inner thumbs, its outer thumbs
+ *                          (MEDIA, LALT) and pinky keys (shift/caps, ctrl+TAB) on the extras
+ *
+ * Change the include to switch the default. build.yaml also builds the other variant through
+ * -DKEYMAP_FILE=... (the *_pacane artifacts).
+ */
+#include "pacino_temper.keymap"

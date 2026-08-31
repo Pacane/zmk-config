@@ -1,0 +1,369 @@
+/*
+ * Pacino keymap -- temper variant.
+ *
+ * The 36 keys the pacino shares with the temper (3x5 + 3 thumbs per half) carry the temper
+ * keymap verbatim: same layers, same home-row mods, same combos (ESC on F+P, caps on L+U).
+ * The four keys the pacino adds (row 3: under X and C on the left, under , and . on the
+ * right) take what the pacane has on its outer pinky columns, which the temper port dropped:
+ *
+ *             under X             under C           under ,       under .
+ *   colemak   shift / caps_word   ctrl (tap: TAB)   SQT (è)       LALT
+ *   qwerty    shift               ctrl (tap: TAB)   SQT           ESC
+ *   gaming    shift               ctrl              SQT           ESC
+ *   lower     WIN layer           --                --            --
+ *   raise     --                  @                 PG_UP         PG_DN
+ *   media     shift               --                --            --
+ *   mouse     shift               --                --            --
+ *   kbd       bootloader          sys_reset         bootloader    sys_reset   (each half its own)
+ *   others    --                  --                --            --
+ *
+ * Nothing on the shared keys was moved, so the temper's muscle memory carries over as is.
+ * The sibling pacino_pacane.keymap is the same board with the pacane's thumb arrangement.
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include "zmk-helpers/helper.h"
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 2500
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
+
+#define L_SQ_BKT &kp RA(LBKT)
+#define R_SQ_BKT &kp RA(RBKT)
+
+#define L_CL_BKT &kp RA(SQT)
+#define R_CL_BKT &kp RA(BSLH)
+
+#define L_CHEV &kp BSLH
+#define R_CHEV &kp LS(BSLH)
+
+#define _PLUS &kp LS(EQUAL)
+#define _PIPE &kp LS(GRAVE)
+#define UNDSCR &kp LS(MINUS)
+#define MULTPL &kp LS(N8)
+#define _AT &kp RA(N2)
+#define AMPRS &kp LS(N7)
+#define TREMA &kp LS(RBRC)
+#define _TILDE &kp RA(SCLN)
+
+#define WS1 LC(LS(LA(N1)))
+#define WS2 LC(LS(LA(N2)))
+#define WS3 LC(LS(LA(N3)))
+#define WS4 LC(LS(LA(N4)))
+#define WS5 LC(LS(LA(N5)))
+#define WS6 LC(LS(LA(N6)))
+#define WS7 LC(LS(LA(N7)))
+#define WS8 LC(LS(LA(N8)))
+#define WS9 LC(LS(LA(N9)))
+#define WS0 LC(LS(LA(N0)))
+
+#define WSL LC(LS(LA(H)))
+#define WSD LC(LS(LA(J)))
+#define WSU LC(LS(LA(K)))
+#define WSR LC(LS(LA(L)))
+
+#define T_FLOAT LC(LS(LA(T)))
+#define W_SWAP  LC(LS(LA(RET)))
+#define L_CYCLE LC(LS(LA(SPACE)))
+
+// Key positions (matrix transform order):
+//  0  1  2  3  4     5  6  7  8  9
+// 10 11 12 13 14    15 16 17 18 19
+// 20 21 22 23 24    25 26 27 28 29
+//    30 31                32 33          <- extras: under X / C, under , / .
+//       34 35 36    37 38 39             <- thumbs
+
+#define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31
+#define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33
+#define THUMBS 34 35 36 37 38 39
+
+/* left-hand HRMs */
+ZMK_HOLD_TAP(hml,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;                // repeat on tap-into-hold
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <KEYS_R THUMBS>;
+    hold-trigger-on-release;             // delay positional check until key-release
+)
+
+/* right-hand HRMs */
+ZMK_HOLD_TAP(hmr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;                // repeat on tap-into-hold
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <KEYS_L THUMBS>;
+    hold-trigger-on-release;             // delay positional check until key-release
+)
+
+/ {
+    behaviors {
+        td_caps: td_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <220>;
+            bindings = <&caps_word>, <&kp CAPSLOCK>;
+        };
+
+        td_shift_caps: td_shift_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <220>;
+            bindings = <&kp LSHFT>, <&caps_word>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <2 3>;
+            bindings = <&kp ESC>;
+        };
+        combo_caps {
+            timeout-ms = <50>;
+            key-positions = <6 7>;
+            bindings = <&td_caps>;
+        };
+    };
+
+    macros {
+        cced: cced {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp RBKT>
+                , <&macro_tap &kp C>
+                ;
+        };
+
+        email: email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp J>
+                , <&macro_tap &kp O>
+                , <&macro_tap &kp E>
+                , <&macro_tap &kp L>
+                , <&macro_tap &kp RA(N2)>
+                , <&macro_tap &kp B>
+                , <&macro_tap &kp R>
+                , <&macro_tap &kp A>
+                , <&macro_tap &kp V>
+                , <&macro_tap &kp E>
+                , <&macro_tap &kp R>
+                , <&macro_tap &kp DOT>
+                , <&macro_tap &kp H>
+                , <&macro_tap &kp E>
+                , <&macro_tap &kp A>
+                , <&macro_tap &kp L>
+                , <&macro_tap &kp T>
+                , <&macro_tap &kp H>
+                ;
+        };
+
+        passwd: passwd {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp M>
+                , <&macro_tap &kp O>
+                , <&macro_tap &kp T>
+                , <&macro_tap &kp D>
+                , <&macro_tap &kp E>
+                , <&macro_tap &kp P>
+                , <&macro_tap &kp A>
+                , <&macro_tap &kp S>
+                , <&macro_tap &kp S>
+                , <&macro_tap &kp E>
+                , <&macro_tap &kp N1>
+                , <&macro_tap &kp N2>
+                , <&macro_tap &kp N3>
+                , <&macro_tap &kp N4>
+                , <&macro_tap &kp N5>
+                ;
+        };
+    };
+};
+
+#define COL 0
+#define QWE 1
+#define GAM 2
+#define LOW 3
+#define RAI 4
+#define NUM 5
+#define FUN 6
+#define FRE 7
+#define MED 8
+#define WIN 9
+#define BKT 10
+#define KBM 11
+#define MOU 12
+#define NMP 13
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "Colemak";
+            bindings = <
+&kp Q        &kp W          &kp F         &kp P        &kp B            &kp J       &kp L        &kp U         &kp Y       &kp SCLN
+&hml LCTRL A &hml RALT R    &hml LGUI S   &hml LSHFT T &lt FRE G        &lt FRE M   &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
+&kp Z        &kp X          &kp C         &kp D        &kp V            &lt MED K   &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH
+             &td_shift_caps &mt LCTRL TAB                                                        &kp SQT       &kp LALT
+                            &lt NMP ESC   &lt LOW TAB  &lt FUN SPACE    &lt NUM RET &lt RAI BSPC &lt MOU DEL
+            >;
+        };
+
+        qwerty_layer {
+            display-name = "Qwerty";
+            bindings = <
+&kp Q        &kp W       &kp E         &kp R        &kp T            &kp Y       &kp U        &kp I         &kp O       &kp P
+&hml LCTRL A &hml RALT S &hml LGUI D   &hml LSHFT F &lt FRE G        &lt FRE H   &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN
+&kp Z        &kp X       &kp C         &kp V        &kp B            &kp N       &kp M        &lt BKT COMMA &kp DOT     &kp FSLH
+             &kp LSHFT   &mt LCTRL TAB                                                        &kp SQT       &kp ESC
+                         &lt NMP ESC   &mo LOW      &lt FUN SPACE    &lt NUM RET &lt RAI BSPC &lt MOU DEL
+            >;
+        };
+
+        gaming_layer {
+            display-name = "Gaming";
+            bindings = <
+&kp Q &kp W     &kp E       &kp R   &kp T            &kp Y       &kp U        &kp I         &kp O   &kp P
+&kp A &kp S     &kp D       &kp F   &lt FRE G        &lt FRE H   &kp J        &kp K         &kp L   &kp SCLN
+&kp Z &kp X     &kp C       &kp V   &kp B            &kp N       &kp M        &lt BKT COMMA &kp DOT &kp FSLH
+      &kp LSHFT &kp LCTRL                                                     &kp SQT       &kp ESC
+                &lt NMP ESC &mo LOW &lt FUN SPACE    &lt NUM RET &lt RAI BSPC &lt RAI DEL
+            >;
+        };
+
+        lower_layer {
+            display-name = "Lower";
+            bindings = <
+&kp GRAVE &kp PSCRN &kp UP   &none     &none    &kp LG(Z)   &kp LG(V) &kp LG(C) &kp LG(X)     &mo KBM
+&mo WIN   &kp LEFT  &kp DOWN &kp RIGHT &none    _TILDE      _AT       &kp GRAVE &kp RA(GRAVE) &kp LS(SQT)
+&none     &none     &none    &none     &none    &kp HOME    &kp PG_DN &kp PG_UP &kp END       &none
+          &mo WIN   &none                                             &none     &none
+                    &none    &none     &none    &kp LA(RET) &kp BSPC  &kp DEL
+            >;
+        };
+
+        raise_layer {
+            display-name = "Raise";
+            bindings = <
+&kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT    &kp CARET       &kp AMPS &kp STAR  &kp LPAR  &kp RPAR
+_PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR     &kp RPAR        R_CL_BKT R_SQ_BKT  R_CHEV    &lt WIN HOME
+UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL       &kp PAUSE_BREAK &kp F12  &kp INS   &kp DEL   &kp END
+         &none     _AT                                                      &kp PG_UP &kp PG_DN
+                   &email    &passwd  &kp SPACE    &none           &none    &none
+            >;
+        };
+
+        num_layer {
+            display-name = "Num";
+            bindings = <
+&kp LS(N3) &kp N7 &kp N8 &kp N9  &kp PLUS     &none &none &none     &none   &none
+&kp LS(N8) &kp N4 &kp N5 &kp N6  &kp MINUS    &none &none &none     &none   &none
+&kp LS(N5) &kp N1 &kp N2 &kp N3  &kp EQUAL    &none &none &kp COMMA &kp DOT &none
+           &none  &none                                   &none     &none
+                  &kp N0 &kp RET &kp SPC      &none &none &none
+            >;
+        };
+
+        fun_layer {
+            display-name = "Fun";
+            bindings = <
+&none &none &none &none     &none    &kp F19   &kp F7 &kp F8    &kp F9 &none
+&none &none &none &kp LSHFT &none    &kp F18   &kp F4 &kp F5    &kp F6 &none
+&none &none &none &none     &none    &none     &kp F1 &kp F2    &kp F3 &none
+      &none &none                                     &none     &none
+            &none &none     &none    &kp SPACE &none  &kp GLOBE
+            >;
+        };
+
+        fr_layer {
+            display-name = "Fr";
+            bindings = <
+&none    &none &none    &none &none    &none &none &none   &none &none
+&kp LBKT &none &none    &none &none    &none &none &kp SQT TREMA &kp SQT
+&none    &none &kp RBKT &none &none    &none &none &none   &none &none
+         &none &none                               &none   &none
+               &none    &none &none    &none &none &none
+            >;
+        };
+
+        media_layer {
+            display-name = "Media";
+            bindings = <
+&none &none     &none &none &kp C_PREV    &none &none &none &none &none
+&none &none     &none &none &kp C_PP      &none &none &none &none &none
+&none &none     &none &none &kp C_FF      &none &none &none &none &none
+      &kp LSHFT &none                                 &none &none
+                &none &none &none         &none &none &none
+            >;
+        };
+
+        win_layer {
+            display-name = "Win";
+            bindings = <
+&kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5        &kp WS6    &kp WS7 &kp WS8 &kp WS9 &kp WS0
+&kp WS1 &kp WS2 &kp WS3  &kp WS4 &kp WS5        &kp WSL    &kp WSD &kp WSU &kp WSR &none
+&none   &none   &none    &none   &none          &none      &none   &none   &none   &none
+        &none   &none                                              &none   &none
+                &kp LGUI &none   &kp L_CYCLE    &kp W_SWAP &none   &none
+            >;
+        };
+
+        brackets_layer {
+            display-name = "Brkt";
+            bindings = <
+&none &none &kp LPAR &kp RPAR &kp EXCL     &none &none &none &none &none
+&none &none L_CL_BKT R_CL_BKT &kp EQUAL    &none &none &none &none &none
+&none &none L_SQ_BKT R_SQ_BKT _PIPE        &none &none &none &none &none
+      &none &none                                      &none &none
+            &none    &none    &none        &none &none &none
+            >;
+        };
+
+        kb_layer {
+            display-name = "Kbd";
+            bindings = <
+&bt BT_CLR  &bt BT_CLR_ALL &bootloader &sys_reset &none    &to 0          &none &none       &none      &bt BT_CLR_ALL
+&bt BT_PRV  &bt BT_NXT     &none       &none      &to 1    &studio_unlock &none &none       &none      &none
+&bt BT_DISC &none          &none       &none      &to 2    &none          &none &none       &none      &none
+            &bootloader    &sys_reset                                           &bootloader &sys_reset
+                           &none       &none      &none    &none          &none &none
+            >;
+        };
+
+        mouse_layer {
+            display-name = "Mouse";
+            bindings = <
+&none &none          &mmv MOVE_UP   &none           &mkp MB2    &none &none        &none          &none    &none
+&none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MB1    &none &mkp MB1     &mkp MB2       &mkp MB3 &none
+&none &none          &none          &none           &none       &none &msc SCRL_UP &msc SCRL_DOWN &none    &none
+      &kp LSHFT      &none                                                         &none          &none
+                     &kp LGUI       &mkp MB4        &mkp MB5    &none &none        &none
+            >;
+        };
+
+        numpad_layer {
+            display-name = "Numpad";
+            bindings = <
+&none &none &none &none     &none        &none     &kp N7  &kp N8   &kp N9 &kp PLUS
+&none &none &none &kp SPACE &none        &kp DOT   &kp N4  &kp N5   &kp N6 &kp MINUS
+&none &none &none &none     &none        &kp COMMA &kp N1  &kp N2   &kp N3 &kp EQUAL
+      &none &none                                          &none    &none
+            &none &none     &kp SPACE    &kp N0    &kp RET &kp BSPC
+            >;
+        };
+    };
+};

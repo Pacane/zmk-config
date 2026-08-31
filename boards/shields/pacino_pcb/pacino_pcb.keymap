@@ -1,0 +1,2 @@
+/* The slim PCB build has the same 40-key layout as the hand-wired one: same keymap, same variants. */
+#include "../pacino/pacino.keymap"

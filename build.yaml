@@ -41,3 +41,35 @@ include:
     snippet: studio-rpc-usb-uart
   - board: nice_nano/nrf52840/zmk
     shield: pacane_dongle_left
+  # Pacino (hand-wired). Default keymap = boards/shields/pacino/pacino.keymap (the temper variant);
+  # the *_pacane artifacts are the same shields built with the pacane variant.
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_left
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_right
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_left
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/boards/shields/pacino/pacino_pacane.keymap
+    artifact-name: pacino_left_pacane
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_right
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/boards/shields/pacino/pacino_pacane.keymap
+    artifact-name: pacino_right_pacane
+  # Pacino slim PCB build: the reversible board puts the matrix on different pins per half, so it
+  # is its own shield; same keymaps.
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_pcb_left
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_pcb_right
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_pcb_left
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/boards/shields/pacino/pacino_pacane.keymap
+    artifact-name: pacino_pcb_left_pacane
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_pcb_right
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/boards/shields/pacino/pacino_pacane.keymap
+    artifact-name: pacino_pcb_right_pacane
+  # nice!view builds: add "nice_view_adapter nice_view" to the shield, e.g.
+  #   shield: pacino_left nice_view_adapter nice_view
+  # (pacino_pcb keeps pro_micro 1/14/15/16 free for it; on pacino, row 3 sits on 16 --
+  #  the nice!view's MOSI -- so move row 3 to 21 and rewire before adding the display)

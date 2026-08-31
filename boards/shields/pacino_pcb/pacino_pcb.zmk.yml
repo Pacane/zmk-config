@@ -1,0 +1,11 @@
+file_format: "1"
+id: pacino_pcb
+name: Pacino (slim PCB)
+type: shield
+url: https://github.com/Pacane/pacino
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - pacino_pcb_left
+  - pacino_pcb_right
