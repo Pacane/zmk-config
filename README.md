@@ -1,90 +1,30 @@
 # ZMK Config
 
-Personal ZMK firmware configuration for custom keyboards.
+Personal [ZMK](https://zmk.dev) firmware for my split keyboards. Every push builds all of them on
+[GitHub Actions](https://github.com/Pacane/zmk-config/actions): download the `.uf2` from the run's artifacts, double-tap reset on
+the nice!nano, drag the file onto the drive that appears.
 
 ## Keyboards
 
-| Shield | Keys | Type | Features |
-|--------|------|------|----------|
-| Pacane | 58 | Split (pro_micro) | Mouse, ZMK Studio |
-| Pacane Corne | 42 | Split (pro_micro) | Pointing |
-| Temper | 36 | Split (pro_micro) | Pointing, OLED, RGB underglow |
-| Pacane Macro | 16 | Single (pro_micro) | Sleep |
+| Keyboard | Keys | Shield | Keymap | Notes |
+|----------|------|--------|--------|-------|
+| Pacane | 58 | [`pacane`](boards/shields/pacane) | [pacane.keymap](boards/shields/pacane/pacane.keymap) | [ZMK Studio](docs/zmk-studio.md); optional [dongle](boards/shields/pacane_dongle) as the central |
+| Pacane Corne | 42 | [`pacane_corne`](boards/shields/pacane_corne) | [pacane_corne.keymap](boards/shields/pacane_corne/pacane_corne.keymap) | |
+| Temper | 36 | [`temper`](boards/shields/temper) | [temper.keymap](boards/shields/temper/temper.keymap) | nice!view display |
+| Pacino | 40 | [`pacino`](boards/shields/pacino), [`pacino_pcb`](boards/shields/pacino_pcb) | [two variants](docs/pacino-keymaps.md) | from [Pacane/pacino](https://github.com/Pacane/pacino) |
+| Trackball | | [`trackball`](boards/shields/trackball) | [trackball.keymap](boards/shields/trackball/trackball.keymap) | PMW3610, [build notes](docs/trackball.md) |
 
-All split keyboards use `nice_nano_v2` boards.
+All on nice!nano v2 (`nice_nano/nrf52840/zmk`); all keyboard keymaps have a mouse layer.
 
-## ZMK Studio
+## Docs
 
-The Pacane shield has ZMK Studio support enabled. This required:
+- [Building locally](docs/building.md)
+- [Pacino keymaps](docs/pacino-keymaps.md) -- the two variants, and running one half alone
+- [ZMK Studio](docs/zmk-studio.md)
+- [Trackball build notes](docs/trackball.md)
 
-1. A physical layout file (`boards/shields/pacane/pacane-layouts.dtsi`) defining key positions for Studio's visual editor.
-2. Switching `chosen` in `pacane.dtsi` from `zmk,matrix-transform` to `zmk,physical-layout`.
-3. Adding `CONFIG_ZMK_STUDIO=y` to `config/pacane.conf`.
+## Layout of the repo
 
-## Building Locally
-
-### Prerequisites
-
-- [Zephyr SDK](https://docs.zephyrproject.org/latest/develop/toolchains/zephyr_sdk.html)
-- Python 3.10.x with `west`, `protobuf`, and `grpcio-tools`:
-  ```
-  pip install west protobuf grpcio-tools
-  ```
-- CMake and Ninja:
-  ```
-  brew install cmake ninja
-  ```
-
-### Setup (first time)
-
-```bash
-cd config
-west init -l .
-west update
-```
-
-### Build
-
-From the repo root:
-
-```bash
-# Pacane left
-west build -s zmk/app -b nice_nano/nrf52840/zmk -- \
-  -DSHIELD=pacane_left \
-  -DZMK_CONFIG="$(pwd)/config" \
-  -DBOARD_ROOT="$(pwd)"
-
-# Pacane right (use -p for pristine rebuild when switching shields)
-west build -s zmk/app -b nice_nano/nrf52840/zmk -p -- \
-  -DSHIELD=pacane_right \
-  -DZMK_CONFIG="$(pwd)/config" \
-  -DBOARD_ROOT="$(pwd)"
-```
-
-Output firmware is at `build/zmk.uf2`.
-
-### Other shields
-
-```bash
-# Temper (with nice_view display)
-west build -s zmk/app -b nice_nano/nrf52840/zmk -p -- \
-  -DSHIELD="temper_left nice_view_adapter nice_view" \
-  -DZMK_CONFIG="$(pwd)/config" \
-  -DBOARD_ROOT="$(pwd)"
-
-# Pacane Corne
-west build -s zmk/app -b nice_nano/nrf52840/zmk -p -- \
-  -DSHIELD=pacane_corne_left \
-  -DZMK_CONFIG="$(pwd)/config" \
-  -DBOARD_ROOT="$(pwd)"
-
-# Pacane Macro
-west build -s zmk/app -b nice_nano/nrf52840/zmk -p -- \
-  -DSHIELD=pacane_macro \
-  -DZMK_CONFIG="$(pwd)/config" \
-  -DBOARD_ROOT="$(pwd)"
-```
-
-## CI
-
-Pushes and pull requests automatically build all shields via GitHub Actions (see `.github/workflows/build.yml` and `build.yaml`).
+- `boards/shields/<name>/` -- shield definition and its keymap
+- `config/<name>.conf` -- per-shield Kconfig options
+- [`build.yaml`](build.yaml) -- the CI build matrix ([workflow](.github/workflows/build.yml))
