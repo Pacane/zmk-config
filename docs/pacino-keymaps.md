@@ -42,3 +42,8 @@ CONFIG_ZMK_KEYBOARD_NAME="Pacino"
 It then shows up over USB and BLE by itself. To go back to the normal split later: delete the file,
 flash `settings_reset` on that half (it stored bonds as a central), flash the regular `pacino_right`
 firmware on it and `pacino_left` on the left, and pair the host again with the left half.
+
+While only the right half exists, the temporary
+[`temper_pacino_left`](../boards/shields/temper_pacino/temper_pacino_left.overlay) shield lets the
+temper's left half stand in as the pacino's left: temper-left hardware, pacino position numbering,
+peripheral role. Flash order and the revert steps are in that file's header.

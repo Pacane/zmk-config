@@ -73,3 +73,6 @@ include:
   #   shield: pacino_left nice_view_adapter nice_view
   # (pacino_pcb keeps pro_micro 1/14/15/16 free for it; on pacino, row 3 sits on 16 --
   #  the nice!view's MOSI -- so move row 3 to 21 and rewire before adding the display)
+  # TEMPORARY test rig: temper left half as a peripheral of the pacino right central
+  - board: nice_nano/nrf52840/zmk
+    shield: temper_pacino_left

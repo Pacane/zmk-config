@@ -1,0 +1,9 @@
+# Peripheral only: ZMK_SPLIT_ROLE_CENTRAL stays off -- the central is the pacino right half
+# (see config/pacino_right.conf).
+
+if SHIELD_TEMPER_PACINO_LEFT
+
+config ZMK_SPLIT
+	default y
+
+endif
