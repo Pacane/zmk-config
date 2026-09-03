@@ -1,8 +1,10 @@
 /*
  * Pacino keymap -- temper variant.
  *
- * The 36 keys the pacino shares with the temper (3x5 + 3 thumbs per half) carry the temper
- * keymap verbatim: same layers, same home-row mods, same combos (ESC on F+P, caps on L+U).
+ * The temper keymap's finger keys, verbatim: same layers, same home-row mods, same combos
+ * (ESC on F+P, caps on L+U) -- but with the PACANE's thumb cluster: the same layer-taps in the
+ * same order (NMP LOW FUN | NUM RAI MOU) with the pacane's tap keys, ESC SPACE RET on the left
+ * and DEL RET BSPC on the right.  TAB therefore lives only on the under-C extra (tap of ctrl).
  * The four keys the pacino adds (row 3: under X and C on the left, under , and . on the
  * right) take what the pacane has on its outer pinky columns, which the temper port dropped:
  *
@@ -11,14 +13,17 @@
  *   qwerty    shift               ctrl (tap: TAB)   SQT           ESC
  *   gaming    shift               ctrl              SQT           ESC
  *   lower     WIN layer           --                --            --
- *   raise     --                  @                 PG_UP         PG_DN
+ *   raise     email               passwd            PG_UP         PG_DN
+ *   fun       --                  --                GLOBE         --
+ *   numpad    --                  --                0             --
  *   media     shift               --                --            --
  *   mouse     shift               --                --            --
  *   kbd       bootloader          sys_reset         bootloader    sys_reset   (each half its own)
  *   others    --                  --                --            --
  *
- * Nothing on the shared keys was moved, so the temper's muscle memory carries over as is.
- * The sibling pacino_pacane.keymap is the same board with the pacane's thumb arrangement.
+ * Finger-key muscle memory from the temper carries over as is; the thumbs follow the pacane.
+ * The sibling pacino_pacane.keymap is the full pacane arrangement (no combos, MED on the
+ * under-, extra instead of K, F10-F12 on the pinky column, ...).
  */
 
 #include <behaviors.dtsi>
@@ -218,55 +223,55 @@ ZMK_HOLD_TAP(hmr,
         default_layer {
             display-name = "Colemak";
             bindings = <
-&kp Q        &kp W          &kp F         &kp P        &kp B            &kp J       &kp L        &kp U         &kp Y       &kp SCLN
-&hml LCTRL A &hml RALT R    &hml LGUI S   &hml LSHFT T &lt FRE G        &lt FRE M   &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
-&kp Z        &kp X          &kp C         &kp D        &kp V            &lt MED K   &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH
-             &td_shift_caps &mt LCTRL TAB                                                        &kp SQT       &kp LALT
-                            &lt NMP ESC   &lt LOW TAB  &lt FUN SPACE    &lt NUM RET &lt RAI BSPC &lt MOU DEL
+&kp Q        &kp W          &kp F         &kp P         &kp B          &kp J       &kp L        &kp U         &kp Y       &kp SCLN
+&hml LCTRL A &hml RALT R    &hml LGUI S   &hml LSHFT T  &lt FRE G      &lt FRE M   &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
+&kp Z        &kp X          &kp C         &kp D         &kp V          &lt MED K   &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH
+             &td_shift_caps &mt LCTRL TAB                                                       &kp SQT       &kp LALT
+                            &lt NMP ESC   &lt LOW SPACE &lt FUN RET    &lt NUM DEL &lt RAI RET  &lt MOU BSPC
             >;
         };
 
         qwerty_layer {
             display-name = "Qwerty";
             bindings = <
-&kp Q        &kp W       &kp E         &kp R        &kp T            &kp Y       &kp U        &kp I         &kp O       &kp P
-&hml LCTRL A &hml RALT S &hml LGUI D   &hml LSHFT F &lt FRE G        &lt FRE H   &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN
-&kp Z        &kp X       &kp C         &kp V        &kp B            &kp N       &kp M        &lt BKT COMMA &kp DOT     &kp FSLH
-             &kp LSHFT   &mt LCTRL TAB                                                        &kp SQT       &kp ESC
-                         &lt NMP ESC   &mo LOW      &lt FUN SPACE    &lt NUM RET &lt RAI BSPC &lt MOU DEL
+&kp Q        &kp W       &kp E         &kp R         &kp T          &kp Y       &kp U        &kp I         &kp O       &kp P
+&hml LCTRL A &hml RALT S &hml LGUI D   &hml LSHFT F  &lt FRE G      &lt FRE H   &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN
+&kp Z        &kp X       &kp C         &kp V         &kp B          &kp N       &kp M        &lt BKT COMMA &kp DOT     &kp FSLH
+             &kp LSHFT   &mt LCTRL TAB                                                       &kp SQT       &kp ESC
+                         &lt NMP ESC   &lt LOW SPACE &lt FUN RET    &lt NUM DEL &lt RAI RET  &lt MOU BSPC
             >;
         };
 
         gaming_layer {
             display-name = "Gaming";
             bindings = <
-&kp Q &kp W     &kp E       &kp R   &kp T            &kp Y       &kp U        &kp I         &kp O   &kp P
-&kp A &kp S     &kp D       &kp F   &lt FRE G        &lt FRE H   &kp J        &kp K         &kp L   &kp SCLN
-&kp Z &kp X     &kp C       &kp V   &kp B            &kp N       &kp M        &lt BKT COMMA &kp DOT &kp FSLH
-      &kp LSHFT &kp LCTRL                                                     &kp SQT       &kp ESC
-                &lt NMP ESC &mo LOW &lt FUN SPACE    &lt NUM RET &lt RAI BSPC &lt RAI DEL
+&kp Q &kp W     &kp E       &kp R         &kp T          &kp Y       &kp U       &kp I         &kp O   &kp P
+&kp A &kp S     &kp D       &kp F         &lt FRE G      &lt FRE H   &kp J       &kp K         &kp L   &kp SCLN
+&kp Z &kp X     &kp C       &kp V         &kp B          &kp N       &kp M       &lt BKT COMMA &kp DOT &kp FSLH
+      &kp LSHFT &kp LCTRL                                                        &kp SQT       &kp ESC
+                &lt NMP ESC &lt LOW SPACE &lt FUN RET    &lt NUM DEL &lt RAI RET &lt RAI BSPC
             >;
         };
 
         lower_layer {
             display-name = "Lower";
             bindings = <
-&kp GRAVE &kp PSCRN &kp UP   &none     &none    &kp LG(Z)   &kp LG(V) &kp LG(C) &kp LG(X)     &mo KBM
-&mo WIN   &kp LEFT  &kp DOWN &kp RIGHT &none    _TILDE      _AT       &kp GRAVE &kp RA(GRAVE) &kp LS(SQT)
-&none     &none     &none    &none     &none    &kp HOME    &kp PG_DN &kp PG_UP &kp END       &none
+&kp GRAVE &kp PSCRN &kp UP   &none     &none    &kp LG(Z) &kp LG(V)   &kp LG(C) &kp LG(X)     &mo KBM
+&mo WIN   &kp LEFT  &kp DOWN &kp RIGHT &none    _TILDE    _AT         &kp GRAVE &kp RA(GRAVE) &kp LS(SQT)
+&none     &none     &none    &none     &none    &kp HOME  &kp PG_DN   &kp PG_UP &kp END       &none
           &mo WIN   &none                                             &none     &none
-                    &none    &none     &none    &kp LA(RET) &kp BSPC  &kp DEL
+                    &none    &none     &none    &kp DEL   &kp LA(RET) &kp BSPC
             >;
         };
 
         raise_layer {
             display-name = "Raise";
             bindings = <
-&kp EXCL &kp AT    &kp HASH  &kp DLLR &kp PRCNT    &kp CARET       &kp AMPS &kp STAR  &kp LPAR  &kp RPAR
-_PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT &kp LPAR     &kp RPAR        R_CL_BKT R_SQ_BKT  R_CHEV    &lt WIN HOME
-UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL       &kp PAUSE_BREAK &kp F12  &kp INS   &kp DEL   &kp END
-         &none     _AT                                                      &kp PG_UP &kp PG_DN
-                   &email    &passwd  &kp SPACE    &none           &none    &none
+&kp EXCL &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET       &kp AMPS &kp STAR  &kp LPAR  &kp RPAR
+_PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT  &kp LPAR     &kp RPAR        R_CL_BKT R_SQ_BKT  R_CHEV    &lt WIN HOME
+UNDSCR   &kp EQUAL &kp MINUS _PLUS     MULTPL       &kp PAUSE_BREAK &kp F12  &kp INS   &kp DEL   &kp END
+         &email    &passwd                                                   &kp PG_UP &kp PG_DN
+                   &none     &kp SPACE &none        &none           &none    &none
             >;
         };
 
@@ -277,18 +282,18 @@ UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL       &kp PAUSE_BREAK &kp F12  &kp 
 &kp LS(N8) &kp N4 &kp N5 &kp N6  &kp MINUS    &none &none &none     &none   &none
 &kp LS(N5) &kp N1 &kp N2 &kp N3  &kp EQUAL    &none &none &kp COMMA &kp DOT &none
            &none  &none                                   &none     &none
-                  &kp N0 &kp RET &kp SPC      &none &none &none
+                  &kp N0 &kp SPC &kp RET      &none &none &none
             >;
         };
 
         fun_layer {
             display-name = "Fun";
             bindings = <
-&none &none &none &none     &none    &kp F19   &kp F7 &kp F8    &kp F9 &none
-&none &none &none &kp LSHFT &none    &kp F18   &kp F4 &kp F5    &kp F6 &none
-&none &none &none &none     &none    &none     &kp F1 &kp F2    &kp F3 &none
-      &none &none                                     &none     &none
-            &none &none     &none    &kp SPACE &none  &kp GLOBE
+&none &none &none &none     &none    &kp F19 &kp F7    &kp F8    &kp F9 &none
+&none &none &none &kp LSHFT &none    &kp F18 &kp F4    &kp F5    &kp F6 &none
+&none &none &none &none     &none    &none   &kp F1    &kp F2    &kp F3 &none
+      &none &none                                      &kp GLOBE &none
+            &none &none     &none    &none   &kp SPACE &none
             >;
         };
 
@@ -361,11 +366,11 @@ UNDSCR   &kp EQUAL &kp MINUS _PLUS    MULTPL       &kp PAUSE_BREAK &kp F12  &kp 
         numpad_layer {
             display-name = "Numpad";
             bindings = <
-&none &none &none &none     &none        &none     &kp N7  &kp N8   &kp N9 &kp PLUS
-&none &none &none &kp SPACE &none        &kp DOT   &kp N4  &kp N5   &kp N6 &kp MINUS
-&none &none &none &none     &none        &kp COMMA &kp N1  &kp N2   &kp N3 &kp EQUAL
-      &none &none                                          &none    &none
-            &none &none     &kp SPACE    &kp N0    &kp RET &kp BSPC
+&none &none &none &none     &none    &none     &kp N7  &kp N8   &kp N9 &kp PLUS
+&none &none &none &kp SPACE &none    &kp DOT   &kp N4  &kp N5   &kp N6 &kp MINUS
+&none &none &none &none     &none    &kp COMMA &kp N1  &kp N2   &kp N3 &kp EQUAL
+      &none &none                                      &kp N0   &none
+            &none &kp SPACE &none    &kp DOT   &kp RET &kp BSPC
             >;
         };
     };
