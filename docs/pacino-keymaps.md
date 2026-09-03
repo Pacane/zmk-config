@@ -16,8 +16,10 @@ Both shields share the keymaps in `boards/shields/pacino/`.
 | [`pacino_temper.keymap`](../boards/shields/pacino/pacino_temper.keymap) | the [temper keymap](../boards/shields/temper/temper.keymap)'s finger keys and combos, verbatim | shift/caps_word, ctrl·TAB / è, LALT |
 | [`pacino_pacane.keymap`](../boards/shields/pacino/pacino_pacane.keymap) | the [pacane keymap](../boards/shields/pacane/pacane.keymap): its 3x5 block, no combos | shift/caps_word, ctrl·TAB / MEDIA, LALT |
 
-Both use the **pacane thumb cluster**: ESC·NMP, SPACE·LOW, RET·FUN on the left and DEL·NUM,
-RET·RAI, BSPC·MOU on the right (TAB sits on the under-C extra, as the tap of ctrl).
+Both use the **pacane disposition on the right thumbs** -- DEL·NUM, RET·RAI, BSPC·MOU -- because
+the pacino's thumb fan sits further out than the temper's, which places the middle and inner keys
+better. On the left, the temper variant keeps the temper cluster (ESC·NMP, TAB·LOW, SPACE·FUN);
+the pacane variant uses the pacane's (ESC·NMP, SPACE·LOW, RET·FUN).
 
 The header comment of each file has the full per-layer table for the extras and lists what was
 relocated from the pacane's number row and outer columns. Both put `&bootloader` / `&sys_reset` on
