@@ -38,6 +38,7 @@ it to rebuild the same shield faster.
 | Pacane Corne | `pacane_corne_left`, `pacane_corne_right` |
 | Temper with nice!view | `"temper_left nice_view_adapter nice_view"`, same with `temper_right` |
 | Pacino, hand-wired | `pacino_left`, `pacino_right` |
+| Pacino with nice!view | `"pacino_left nice_view_adapter nice_view"`, same with `pacino_right` ([wiring](pacino-nice-view.md)) |
 | Pacino, slim PCB | `pacino_pcb_left`, `pacino_pcb_right` |
 | Trackball | `trackball` |
 | Wipe a half's settings (bonds) | `settings_reset` |

@@ -69,10 +69,11 @@ include:
     shield: pacino_pcb_right
     cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/boards/shields/pacino/pacino_pacane.keymap
     artifact-name: pacino_pcb_right_pacane
-  # nice!view builds: add "nice_view_adapter nice_view" to the shield, e.g.
-  #   shield: pacino_left nice_view_adapter nice_view
-  # (pacino_pcb keeps pro_micro 1/14/15/16 free for it; on pacino, row 3 sits on 16 --
-  #  the nice!view's MOSI -- so move row 3 to 21 and rewire before adding the display)
-  # TEMPORARY test rig: temper left half as a peripheral of the pacino right central
+  # Pacino with the nice!view: five wires to pro_micro 1 (CS), 2 (MOSI), 3 (SCK) + VCC/GND, no
+  # matrix change (docs/pacino-nice-view.md). Same keymap; the shield string adds the display.
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_left nice_view_adapter nice_view
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_right nice_view_adapter nice_view
   - board: nice_nano/nrf52840/zmk
     shield: temper_pacino_left
