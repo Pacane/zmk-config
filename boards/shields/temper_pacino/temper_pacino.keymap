@@ -1,3 +1,0 @@
-/* The peripheral does not act on the keymap, but it builds with the pacino's for consistency --
- * the transform above uses the pacino's position numbering. */
-#include "../pacino/pacino.keymap"

@@ -75,5 +75,3 @@ include:
     shield: pacino_left nice_view_adapter nice_view
   - board: nice_nano/nrf52840/zmk
     shield: pacino_right nice_view_adapter nice_view
-  - board: nice_nano/nrf52840/zmk
-    shield: temper_pacino_left

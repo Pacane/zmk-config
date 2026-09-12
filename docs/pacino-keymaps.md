@@ -37,7 +37,7 @@ CI builds both variants for both shields: the plain `pacino_*` artifacts use the
 ## Testing a single half
 
 The shield's `Kconfig.defconfig` makes the left half the central. To run the right half on its own
-(only one half wired yet), give it the central role in `config/pacino_right.conf`:
+(only one half wired yet), give it the central role in a `config/pacino_right.conf`:
 
 ```
 CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
@@ -48,7 +48,6 @@ It then shows up over USB and BLE by itself. To go back to the normal split late
 flash `settings_reset` on that half (it stored bonds as a central), flash the regular `pacino_right`
 firmware on it and `pacino_left` on the left, and pair the host again with the left half.
 
-While only the right half exists, the temporary
-[`temper_pacino_left`](../boards/shields/temper_pacino/temper_pacino_left.overlay) shield lets the
-temper's left half stand in as the pacino's left: temper-left hardware, pacino position numbering,
-peripheral role. Flash order and the revert steps are in that file's header.
+(While the pacino's left half did not exist yet, a throwaway `temper_pacino_left` shield -- temper-left
+hardware with the pacino's position numbering, peripheral role -- let the temper's left half stand in;
+it is in git history before the commit "pacino: the left half is the central again".)
