@@ -10,6 +10,13 @@
  * on BOTH halves.  tools/pcb_gen.py prints these two pin lists every time it builds the board.
  *
  * The hand-wired build keeps its own `pacino` shield; do not cross the two.
+ *
+ * NOTE the pin lists below are the pacino README's tables with the halves SWAPPED.  Those tables
+ * assume the nano sits on the parts face (with the hot-swap sockets, i.e. the underside), but the
+ * case puts it on top of the board, component side down, flush in the plate window -- and on the
+ * other face the nano's two pin rows are exchanged.  Same for the L/R solder jumpers: bridge to the
+ * letter printed on the face the nano is on (L on the right half, R on the left), or battery + lands
+ * on P0.06 and battery - on the nano's VCC pin.  docs/pacino-pcb.md has the whole story.
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
