@@ -11,12 +11,11 @@
  *
  * The hand-wired build keeps its own `pacino` shield; do not cross the two.
  *
- * NOTE the pin lists below are the pacino README's tables with the halves SWAPPED.  Those tables
- * assume the nano sits on the parts face (with the hot-swap sockets, i.e. the underside), but the
- * case puts it on top of the board, component side down, flush in the plate window -- and on the
- * other face the nano's two pin rows are exchanged.  Same for the L/R solder jumpers: bridge to the
- * letter printed on the face the nano is on (L on the right half, R on the left), or battery + lands
- * on P0.06 and battery - on the nano's VCC pin.  docs/pacino-pcb.md has the whole story.
+ * The controller sits ON TOP of the board -- the face opposite the hot-swap sockets, component side
+ * towards the board, flush in the plate window -- and the pin lists in the two overlays are for that.
+ * The pacino repo's generator and docs were fixed to match in September 2026; boards made before
+ * that have their L/R jumper letters on the wrong face and a reset footprint that shorts RST to GND
+ * unless the tactile is fitted by two diagonal legs.  docs/pacino-pcb.md has the whole story.
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>

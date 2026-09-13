@@ -1,9 +1,9 @@
 #include "pacino_pcb.dtsi"
 
 /*
- * Right half: parts on the board's FRONT face, controller on the BACK -- see the left overlay; the
- * same face swap applies, so these are the pacino README's *left*-half pins.  Bridge JP1 / JP2 to
- * the pad marked L (the mark on the face the nano sits on).
+ * Right half: sockets and diodes on the board's FRONT face, controller on the BACK (on top of the
+ * board, component side down) -- the mirror of the left half, so every hole is the other pin of
+ * its pair.  Bridge JP1 / JP2 to the pad marked R, on the face the nano sits on.
  */
 
 &default_transform {

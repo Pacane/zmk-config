@@ -1,20 +1,27 @@
 # Pacino slim PCB: the controller sits on the other face
 
-The pacino README's `pcb/*/README.md` says to put the controller sockets "on the same face as
-everything else" and gives per-half pin tables and `L`/`R` jumper choices on that basis. The case
-disagrees: the nano goes **on top of the board**, component side down, its back flush in the plate's
-controller window (`z_mcu_bot = z_pcb_top + mcu_socket_h` in `keyboard.scad`; there is only 2.4 mm
-under the board). The hot-swap sockets and diodes are on the underside, the controller sockets on the
-top face.
+The nano goes **on top of the board** -- the face opposite the hot-swap sockets and diodes --
+component side down, its back flush in the plate's controller window (`z_mcu_bot = z_pcb_top +
+mcu_socket_h` in `keyboard.scad`; there is only 2.4 mm under the board). Until September 2026 the
+pacino PCB generator assumed the controller sat on the parts face instead, so its per-half pin tables
+and `L`/`R` jumper letters were the wrong way round; the generator, its READMEs and the overlays in
+both repos now agree with the case. Flipping which face the nano sits on exchanges its two pin rows.
 
-Flipping which face the nano sits on exchanges its two pin rows, so relative to those tables:
+**Boards from before that fix** (the first batch): the letter printed on the controller's face is the
+*other* half's, but it is still the pad to bridge --
 
-| half | parts face | nano on | bridge JP1 / JP2 to | ZMK pins (this repo) |
-|------|-----------|---------|---------------------|----------------------|
-| right | front (`R` marks) | back / top, where the `L` marks are | **`L`** | the README's *left*-half list: rows `pro_micro` 21/20/19/18/10, cols 2/3/4/5/9 |
-| left | back (`L` marks) | front / top, where the `R` marks are | **`R`** | the README's *right*-half list: rows 2/3/4/5/9, cols 10/18/19/20/21 |
+| half | parts face | nano on | bridge JP1 / JP2 to the pad marked | ZMK pins |
+|------|-----------|---------|------------------------------------|----------|
+| right | front | back / top | **`L`** (the mark you can see from the top) | rows `pro_micro` 21/20/19/18/10, cols inner-first 9/5/4/3/2 |
+| left | back | front / top | **`R`** | rows 2/3/4/5/9, cols pinky-first 21/20/19/18/10 |
 
-Rule of thumb: **bridge to the letter printed on the face the nano is on.**
+Those boards also have the reset footprint's nets on the wrong leg pairs (a 12 mm tactile links the
+legs 12.5 mm apart, the footprint linked the 5 mm ones), so fitted normally the switch shorts RST to
+GND and the nano never boots: fit it by **two diagonal legs only**. And their jumpers sit under the
+bay's corner boss, where a solder bridge stops the case closing: bypass them with two wires instead
+(`PWR` middle pin to the nano's RAW hole, `BAT -` to its GND hole) and leave the pads bare.
+
+Rule of thumb on any board: **bridge the marked pad on the face the nano is on.**
 
 Get it wrong (nano on top, jumpers to the parts-face letter) and the battery goes into GPIO P0.06
 through its protection diode and out of the nano's VCC pin: the nano heats up within seconds and
