@@ -18,11 +18,13 @@
         , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* row 3: extras */
         , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* row 4: thumbs */
         ;
+    /* the board's COL0 net is the pinky column on both halves; the transform wants the right
+     * half's columns inner-first, so this list runs COL4 .. COL0 */
     col-gpios
-        = <&pro_micro 2 GPIO_ACTIVE_HIGH>    /* col 5: inner  */
-        , <&pro_micro 3 GPIO_ACTIVE_HIGH>    /* col 6: index  */
-        , <&pro_micro 4 GPIO_ACTIVE_HIGH>    /* col 7: middle */
-        , <&pro_micro 5 GPIO_ACTIVE_HIGH>    /* col 8: ring   */
-        , <&pro_micro 9 GPIO_ACTIVE_HIGH>    /* col 9: pinky  */
+        = <&pro_micro 9 GPIO_ACTIVE_HIGH>    /* col 5: inner  (COL4) */
+        , <&pro_micro 5 GPIO_ACTIVE_HIGH>    /* col 6: index  (COL3) */
+        , <&pro_micro 4 GPIO_ACTIVE_HIGH>    /* col 7: middle (COL2) */
+        , <&pro_micro 3 GPIO_ACTIVE_HIGH>    /* col 8: ring   (COL1) */
+        , <&pro_micro 2 GPIO_ACTIVE_HIGH>    /* col 9: pinky  (COL0) */
         ;
 };
