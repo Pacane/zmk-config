@@ -18,7 +18,7 @@ Both shields share the keymaps in `boards/shields/pacino/`.
 
 Both use the **pacane disposition on the right thumbs** -- DEL·NUM, RET·RAI, BSPC·MOU -- because
 the pacino's thumb fan sits further out than the temper's, which places the middle and inner keys
-better. On the left, the temper variant keeps the temper cluster (ESC·NMP, TAB·LOW, SPACE·FUN);
+better. On the left, the temper variant keeps the temper layers with SPACE and TAB swapped (ESC·NMP, SPACE·LOW, TAB·FUN);
 the pacane variant uses the pacane's (ESC·NMP, SPACE·LOW, RET·FUN).
 
 The header comment of each file has the full per-layer table for the extras and lists what was
