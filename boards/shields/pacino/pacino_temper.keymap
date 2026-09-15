@@ -118,7 +118,7 @@ ZMK_HOLD_TAP(hmr,
         td_caps: td_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <220>;
+            tapping-term-ms = <300>;   // second L+U chord may come this long after the first (was 220)
             bindings = <&caps_word>, <&kp CAPSLOCK>;
         };
 
@@ -138,7 +138,7 @@ ZMK_HOLD_TAP(hmr,
             bindings = <&kp ESC>;
         };
         combo_caps {
-            timeout-ms = <50>;
+            timeout-ms = <80>;         // both keys are on the peripheral half: allow for BLE jitter (was 50)
             key-positions = <6 7>;
             bindings = <&td_caps>;
         };
