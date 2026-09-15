@@ -2,7 +2,7 @@
  * Pacino keymap -- temper variant.
  *
  * The temper keymap's finger keys, verbatim: same layers, same home-row mods, same combos
- * (ESC on F+P, caps on L+U).  The thumbs are deliberately mixed: the LEFT keeps the temper's
+ * (ESC on F+P, caps_word on L+U, Caps Lock on U+Y).  The thumbs are deliberately mixed: the LEFT keeps the temper's
  * layers with SPACE and TAB swapped (tap keys ESC SPACE TAB), the RIGHT uses the pacane's
  * (DEL RET BSPC) -- the pacino's
  * thumb fan sits further out than the temper's, so the pacane disposition fits the middle and
@@ -115,12 +115,6 @@ ZMK_HOLD_TAP(hmr,
 
 / {
     behaviors {
-        td_caps: td_caps {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;   // second L+U chord may come this long after the first (was 220)
-            bindings = <&caps_word>, <&kp CAPSLOCK>;
-        };
 
         td_shift_caps: td_shift_caps {
             compatible = "zmk,behavior-tap-dance";
@@ -137,10 +131,15 @@ ZMK_HOLD_TAP(hmr,
             key-positions = <2 3>;
             bindings = <&kp ESC>;
         };
-        combo_caps {
-            timeout-ms = <80>;         // both keys are on the peripheral half: allow for BLE jitter (was 50)
+        combo_caps_word {           // L + U
+            timeout-ms = <50>;
             key-positions = <6 7>;
-            bindings = <&td_caps>;
+            bindings = <&caps_word>;
+        };
+        combo_caps_lock {           // U + Y
+            timeout-ms = <50>;
+            key-positions = <7 8>;
+            bindings = <&kp CAPSLOCK>;
         };
     };
 
