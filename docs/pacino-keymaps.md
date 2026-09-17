@@ -13,7 +13,7 @@ Both shields share the keymaps in `boards/shields/pacino/`.
 
 | Keymap | Based on | Extras (left / right) |
 |--------|----------|-----------------------|
-| [`pacino_temper.keymap`](../boards/shields/pacino/pacino_temper.keymap) | the [temper keymap](../boards/shields/temper/temper.keymap)'s finger keys and combos, verbatim | shift/caps_word, ctrl·TAB / è, LALT |
+| [`pacino_temper.keymap`](../boards/shields/pacino/pacino_temper.keymap) | the [temper keymap](../boards/shields/temper/temper.keymap)'s finger keys and combos, verbatim | shift/caps_word, ctrl·TAB / MEDIA, LALT (raise: email, passwd / PgUp, PgDn) |
 | [`pacino_pacane.keymap`](../boards/shields/pacino/pacino_pacane.keymap) | the [pacane keymap](../boards/shields/pacane/pacane.keymap): its 3x5 block, no combos | shift/caps_word, ctrl·TAB / MEDIA, LALT |
 
 Both use the **pacane disposition on the right thumbs** -- DEL·NUM, RET·RAI, BSPC·MOU -- because

@@ -8,14 +8,15 @@
  * thumb fan sits further out than the temper's, so the pacane disposition fits the middle and
  * inner keys better.  Layer-taps are the same on both: NMP LOW FUN | NUM RAI MOU.
  * The four keys the pacino adds (row 3: under X and C on the left, under , and . on the
- * right) take what the pacane has on its outer pinky columns, which the temper port dropped:
+ * right) take what the pacane has on its outer pinky columns, which the temper port dropped --
+ * except the pacane's media-layer thumb (under ,) and its raise-layer macros (under X / C):
  *
  *             under X             under C           under ,       under .
- *   colemak   shift / caps_word   ctrl (tap: TAB)   SQT (è)       LALT
- *   qwerty    shift               ctrl (tap: TAB)   SQT           ESC
- *   gaming    shift               ctrl              SQT           ESC
+ *   colemak   shift / caps_word   ctrl (tap: TAB)   MEDIA layer   LALT
+ *   qwerty    shift               ctrl (tap: TAB)   MEDIA layer   ESC
+ *   gaming    shift               ctrl              MEDIA layer   ESC
  *   lower     WIN layer           --                --            --
- *   raise     --                  @                 PG_UP         PG_DN
+ *   raise     email               passwd            PG_UP         PG_DN
  *   fun       --                  --                GLOBE         --
  *   numpad    --                  --                0             --
  *   media     shift               --                --            --
@@ -25,7 +26,7 @@
  *
  * Finger-key muscle memory from the temper carries over as is; only the right thumbs moved to
  * the pacane's.  The sibling pacino_pacane.keymap is the full pacane arrangement (pacane left
- * thumbs too, no combos, MED on the under-, extra instead of K, F10-F12 on the pinky column).
+ * thumbs too, no combos, plain K instead of hold-K for MED, F10-F12 on the pinky column).
  */
 
 #include <behaviors.dtsi>
@@ -227,7 +228,7 @@ ZMK_HOLD_TAP(hmr,
 &kp Q        &kp W          &kp F         &kp P         &kp B          &kp J       &kp L        &kp U         &kp Y       &kp SCLN
 &hml LCTRL A &hml RALT R    &hml LGUI S   &hml LSHFT T  &lt FRE G      &lt FRE M   &hmr LSHFT N &hmr LGUI E   &hmr LALT I &hmr LCTRL O
 &kp Z        &kp X          &kp C         &kp D         &kp V          &lt MED K   &lt MOU H    &lt BKT COMMA &kp DOT     &kp FSLH
-             &td_shift_caps &mt LCTRL TAB                                                       &kp SQT       &kp LALT
+             &td_shift_caps &mt LCTRL TAB                                                       &mo MED       &kp LALT
                             &lt NMP ESC   &lt LOW SPACE &lt FUN TAB    &lt NUM DEL &lt RAI RET  &lt MOU BSPC
             >;
         };
@@ -238,7 +239,7 @@ ZMK_HOLD_TAP(hmr,
 &kp Q        &kp W       &kp E         &kp R         &kp T          &kp Y       &kp U        &kp I         &kp O       &kp P
 &hml LCTRL A &hml RALT S &hml LGUI D   &hml LSHFT F  &lt FRE G      &lt FRE H   &hmr LSHFT J &hmr LGUI K   &hmr LALT L &hmr LCTRL SCLN
 &kp Z        &kp X       &kp C         &kp V         &kp B          &kp N       &kp M        &lt BKT COMMA &kp DOT     &kp FSLH
-             &kp LSHFT   &mt LCTRL TAB                                                       &kp SQT       &kp ESC
+             &kp LSHFT   &mt LCTRL TAB                                                       &mo MED       &kp ESC
                          &lt NMP ESC   &lt LOW SPACE &lt FUN TAB    &lt NUM DEL &lt RAI RET  &lt MOU BSPC
             >;
         };
@@ -249,7 +250,7 @@ ZMK_HOLD_TAP(hmr,
 &kp Q &kp W     &kp E       &kp R         &kp T          &kp Y       &kp U       &kp I         &kp O   &kp P
 &kp A &kp S     &kp D       &kp F         &lt FRE G      &lt FRE H   &kp J       &kp K         &kp L   &kp SCLN
 &kp Z &kp X     &kp C       &kp V         &kp B          &kp N       &kp M       &lt BKT COMMA &kp DOT &kp FSLH
-      &kp LSHFT &kp LCTRL                                                        &kp SQT       &kp ESC
+      &kp LSHFT &kp LCTRL                                                        &mo MED       &kp ESC
                 &lt NMP ESC &lt LOW SPACE &lt FUN TAB    &lt NUM DEL &lt RAI RET &lt RAI BSPC
             >;
         };
@@ -271,8 +272,8 @@ ZMK_HOLD_TAP(hmr,
 &kp EXCL &kp AT    &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET       &kp AMPS &kp STAR  &kp LPAR  &kp RPAR
 _PIPE    L_CHEV    L_SQ_BKT  L_CL_BKT  &kp LPAR     &kp RPAR        R_CL_BKT R_SQ_BKT  R_CHEV    &lt WIN HOME
 UNDSCR   &kp EQUAL &kp MINUS _PLUS     MULTPL       &kp PAUSE_BREAK &kp F12  &kp INS   &kp DEL   &kp END
-         &none     _AT                                                       &kp PG_UP &kp PG_DN
-                   &email    &kp SPACE &passwd      &none           &none    &none
+         &email    &passwd                                                   &kp PG_UP &kp PG_DN
+                   &none     &kp SPACE &none        &none           &none    &none
             >;
         };
 
