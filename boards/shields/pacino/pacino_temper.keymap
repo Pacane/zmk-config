@@ -302,9 +302,9 @@ UNDSCR   &kp EQUAL &kp MINUS _PLUS     MULTPL       &kp PAUSE_BREAK &kp F12  &kp
         fr_layer {
             display-name = "Fr";
             bindings = <
-&none    &none &none    &none &none    &none &none &none   &none &none
-&kp LBKT &none &none    &none &none    &none &none &kp SQT TREMA &kp SQT
-&none    &none &kp RBKT &none &none    &none &none &none   &none &none
+&none    &none &none    &none   &none    &none    &none &none   &none &none
+&kp LBKT &none &none    &kp SQT &none    &kp LBKT &none &kp SQT TREMA &kp SQT
+&none    &none &kp RBKT &none   &none    &none    &none &none   &none &none
          &none &none                               &none   &none
                &none    &none &none    &none &none &none
             >;
