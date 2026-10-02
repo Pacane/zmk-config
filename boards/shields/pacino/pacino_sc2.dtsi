@@ -1,0 +1,124 @@
+/*
+ * Pacino -- StarCraft II layers, shared by both keymap variants (each includes this file after its
+ * own keymap and defines the SC2 / SC2F layer numbers).
+ *
+ * Left hand only; the right one is on the mouse.  The letters are the Colemak ones, where they
+ * always are, so the hotkeys the game shows say where to press.  The profile to load in the game
+ * is CoreTwo.SC2Hotkeys (github.com/Pacane/coretwo): TheCore 6g with its keys renamed to these.
+ *
+ *   SC2     Q  W  F  P  B        command card; Q is cancel; shift+B cycles town halls
+ *           A  R  S  T  G        A R S: control groups 1 2 3   (shift: create and steal, ctrl: add)
+ *           Z  X  C  D  V        Z C:   control groups 5 4     (shift+ctrl: create, no steal)
+ *              SPACE TAB         command card, on the ring and middle fingers
+ *                 SC2F shift ctrl   SC2F tapped alone: alt, which centers the camera
+ *
+ *   SC2F    save camera 1-5      held with the thumb, so every key is a whole chord; holding a
+ *                                save key keeps alt down, to move the view before it is saved
+ *           jump to camera 1-5
+ *           co-op commander abilities 1-4, then select army
+ *              6  ESC            idle worker, menu
+ *
+ * No hold-tap on the finger keys, so nothing waits on a tapping term.  The right half falls through
+ * to the base layer; the key under . leaves the layer (the kbd layer enters it).
+ */
+
+#define CAM1 &kp N0
+#define CAM2 &kp N9
+#define CAM3 &kp N8
+#define CAM4 &kp U
+#define CAM5 &kp LS(N9)
+
+#define SAV1 &sc2_save N0
+#define SAV2 &sc2_save N9
+#define SAV3 &sc2_save N8
+#define SAV4 &sc2_save U
+#define SAV5 &sc2_save T
+
+#define CMD1 &kp LC(LA(A))
+#define CMD2 &kp LC(LA(R))
+#define CMD3 &kp LC(LA(S))
+#define CMD4 &kp LC(LA(T))
+
+#define ARMY &kp F9
+#define TOWN &kp MINUS
+
+/*
+ * SC2 control-group keys.  With shift they send ctrl+shift+key, TheCore's "create and steal";
+ * with shift and ctrl both held they send shift+key, its plain "create" (no steal).
+ */
+#define SC2_GROUP(name, key) \
+    ZMK_MOD_MORPH(name ## _shift, \
+        bindings = <&kp LC(key)>, <&kp key>; \
+        mods = <(MOD_LCTL)>; \
+    ) \
+    ZMK_MOD_MORPH(name, \
+        bindings = <&kp key>, <&name ## _shift>; \
+        mods = <(MOD_LSFT)>; \
+        keep-mods = <(MOD_LSFT)>; \
+    )
+SC2_GROUP(sg_a, A)
+SC2_GROUP(sg_r, R)
+SC2_GROUP(sg_s, S)
+SC2_GROUP(sg_c, C)
+SC2_GROUP(sg_z, Z)
+
+/*
+ * The B key: with shift held it cycles the town halls instead (shift stays down), for injects --
+ * queens, inject (P), hold shift, then B, click, B, click.
+ */
+ZMK_MOD_MORPH(sc2_town,
+    bindings = <&kp B>, <TOWN>;
+    mods = <(MOD_LSFT)>;
+    keep-mods = <(MOD_LSFT)>;
+)
+
+/*
+ * Save a camera, the way it is done by hand: alt goes down and stays down for as long as the key
+ * is held (alt centers the camera on the selection, and the view can still be moved from there),
+ * the camera key is tapped on release, then alt comes up.  So the game sees alt before the key.
+ */
+ZMK_MACRO_ONE_PARAM(sc2_save,
+    wait-ms = <30>;
+    tap-ms = <30>;
+    bindings = <&macro_press &kp LALT>
+             , <&macro_pause_for_release>
+             , <&macro_param_1to1>
+             , <&macro_tap &kp MACRO_PLACEHOLDER>
+             , <&macro_release &kp LALT>;
+)
+
+/*
+ * The SC2F thumb: held, the layer; tapped alone, alt, which centers the camera on the selection.
+ * Hold-preferred: any key pressed under it settles it as a hold at once, so nothing waits.
+ */
+ZMK_HOLD_TAP(sc2_fn,
+    flavor = "hold-preferred";
+    tapping-term-ms = <200>;
+    bindings = <&mo>, <&kp>;
+)
+
+/ {
+    keymap {
+        sc2_layer {
+            display-name = "SC2";
+            bindings = <
+&kp Q &kp W     &kp F    &kp P     &sc2_town    &trans &trans &trans &trans &trans
+&sg_a &sg_r     &sg_s    &kp T     &kp G        &trans &trans &trans &trans &trans
+&sg_z &kp X     &sg_c    &kp D     &kp V        &trans &trans &trans &trans &trans
+      &kp SPACE &kp TAB                                       &trans &to COL
+                &sc2_fn SC2F LALT &kp LSHFT &kp LCTRL    &trans &trans &trans
+            >;
+        };
+
+        sc2_fn_layer {
+            display-name = "SC2 fn";
+            bindings = <
+SAV1 SAV2   SAV3    SAV4   SAV5      &trans &trans &trans &trans &trans
+CAM1 CAM2   CAM3    CAM4   CAM5      &trans &trans &trans &trans &trans
+CMD1 CMD2   CMD3    CMD4   ARMY      &trans &trans &trans &trans &trans
+     &kp N6 &kp ESC                                &trans &trans
+            &trans  &trans &trans    &trans &trans &trans
+            >;
+        };
+    };
+};
