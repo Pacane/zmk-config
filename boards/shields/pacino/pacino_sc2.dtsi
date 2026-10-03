@@ -6,7 +6,8 @@
  * always are, so the hotkeys the game shows say where to press.  The profile to load in the game
  * is CoreTwo.SC2Hotkeys (github.com/Pacane/coretwo): TheCore 6g with its keys renamed to these.
  *
- *   SC2     Q  W  F  P  B        command card; Q is cancel; shift+B cycles town halls
+ *   SC2     Q  W  F  P  B        command card; Q is cancel; shift+B cycles town halls,
+ *                                shift+Q patrols, shift+W is \ (burrow research)
  *           A  R  S  T  G        A R S: control groups 1 2 3   (shift: create and steal, ctrl: add)
  *           Z  X  C  D  V        Z C:   control groups 5 4     (shift+ctrl: create, no steal)
  *              SPACE TAB         command card, on the ring and middle fingers
@@ -73,6 +74,21 @@ ZMK_MOD_MORPH(sc2_town,
 )
 
 /*
+ * Q and W: with shift held, patrol (Y) and \ (burrow research, spray), which the pacane has on its
+ * outer column and the pacino has nowhere else.  Shift stays down, so the patrol is queued.
+ */
+ZMK_MOD_MORPH(sc2_patrol,
+    bindings = <&kp Q>, <&kp Y>;
+    mods = <(MOD_LSFT)>;
+    keep-mods = <(MOD_LSFT)>;
+)
+ZMK_MOD_MORPH(sc2_bslh,
+    bindings = <&kp W>, <&kp BSLH>;
+    mods = <(MOD_LSFT)>;
+    keep-mods = <(MOD_LSFT)>;
+)
+
+/*
  * Save a camera, the way it is done by hand: alt goes down and stays down for as long as the key
  * is held (alt centers the camera on the selection, and the view can still be moved from there),
  * the camera key is tapped on release, then alt comes up.  So the game sees alt before the key.
@@ -102,7 +118,7 @@ ZMK_HOLD_TAP(sc2_fn,
         sc2_layer {
             display-name = "SC2";
             bindings = <
-&kp Q &kp W     &kp F    &kp P     &sc2_town    &trans &trans &trans &trans &trans
+&sc2_patrol &sc2_bslh &kp F &kp P &sc2_town    &trans &trans &trans &trans &trans
 &sg_a &sg_r     &sg_s    &kp T     &kp G        &trans &trans &trans &trans &trans
 &sg_z &kp X     &sg_c    &kp D     &kp V        &trans &trans &trans &trans &trans
       &kp SPACE &kp TAB                                       &trans &to COL
