@@ -47,6 +47,11 @@ include:
     shield: pacino_left
   - board: nice_nano/nrf52840/zmk
     shield: pacino_right
+  # Debug build of the central half: logs over USB serial, to catch the "connected but no keys" state.
+  - board: nice_nano/nrf52840/zmk
+    shield: pacino_left
+    snippet: zmk-usb-logging
+    artifact-name: pacino_left_logging
   - board: nice_nano/nrf52840/zmk
     shield: pacino_left
     cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/boards/shields/pacino/pacino_pacane.keymap
